@@ -4,23 +4,23 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/wissen"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".RegistrationActivity"></activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".ChooseLoginRegistration">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".bootActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
-
-
+        <activity android:name=".ChooseTask" />
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ChooseLoginRegistration" />
     </application>
 
 </manifest>
