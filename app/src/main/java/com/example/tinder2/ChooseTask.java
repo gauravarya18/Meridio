@@ -20,7 +20,7 @@ public class ChooseTask extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ChooseTask.this, DashboardActivity.class);
                 startActivity(intent);
-                finish();
+
                 return;
             }
         });
@@ -30,7 +30,7 @@ public class ChooseTask extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ChooseTask.this, ProfileActivity.class);
                 startActivity(intent);
-                finish();
+
                 return;
             }
         });
@@ -40,7 +40,7 @@ public class ChooseTask extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ChooseTask.this, MainActivity.class);
                 startActivity(intent);
-                finish();
+
                 return;
             }
         });
@@ -50,7 +50,7 @@ public class ChooseTask extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ChooseTask.this, SettingsActivity.class);
                 startActivity(intent);
-                finish();
+
                 return;
             }
         });
