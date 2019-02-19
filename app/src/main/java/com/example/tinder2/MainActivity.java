@@ -98,7 +98,7 @@ mAuth=FirebaseAuth.getInstance();
     }
     public void logoutUser(View view){
         mAuth.signOut();
-        Intent intent=new Intent(MainActivity.this,ChooseLoginRegistration.class);
+        Intent intent=new Intent(MainActivity.this,LoginActivity.class);
         startActivity(intent);
         finish();
         return;
