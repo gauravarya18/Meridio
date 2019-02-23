@@ -34,10 +34,13 @@ mAuth=FirebaseAuth.getInstance();
         al.add("Yass you!!");
         al.add("one reading this");
         al.add("I wnt 2 say smthng");
-        al.add("I");
-        al.add("LOVE");
-        al.add("YOU");
-        al.add("the MOST");
+        al.add("Your");
+        al.add("smile");
+        al.add("is");
+        al.add("as");
+        al.add("BEAUTIFUL");
+        al.add("as");
+        al.add("you!!");
         al.add("<3");
 
         arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.helloText, al );
