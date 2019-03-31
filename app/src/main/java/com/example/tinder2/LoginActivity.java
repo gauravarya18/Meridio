@@ -23,6 +23,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

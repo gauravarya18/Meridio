@@ -38,7 +38,7 @@ public class ChooseTask extends AppCompatActivity {
         mPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ChooseTask.this, MainActivity.class);
+                Intent intent = new Intent(ChooseTask.this, NewsActivity.class);
                 startActivity(intent);
 
                 return;
