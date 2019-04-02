@@ -28,14 +28,15 @@ public class NewsActivity extends AppCompatActivity {
     ArrayList<String> titles;
     ArrayList<String> links;
     ArrayList<String> a1;
-    int i=0;
+    int i=0,x;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
-
+        int a=(int)getIntent().getSerializableExtra("mapid");
+        x=a;
         lvRss = (ListView) findViewById(R.id.lvRss);
 
         titles = new ArrayList<String>();
@@ -187,6 +188,7 @@ public class NewsActivity extends AppCompatActivity {
             super.onPostExecute(s);
             Intent intent = new Intent(NewsActivity.this, MainActivity.class);
             intent.putExtra("a1", a1);
+            intent.putExtra("mapid",x);
             startActivity(intent);
             finish();
 //            ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, titles);

@@ -8,12 +8,13 @@ import android.widget.Button;
 
 public class ChooseTask extends AppCompatActivity {
     private Button mDashboard,mProfile,mPlay,mSettings;
+    int x;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_task);
-
-
+      int i=(int)getIntent().getSerializableExtra("mapid");
+         x=i;
         mDashboard = (Button) findViewById(R.id.dashboard);
         mDashboard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +40,7 @@ public class ChooseTask extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ChooseTask.this, NewsActivity.class);
+                intent.putExtra("mapid",x);
                 startActivity(intent);
 
                 return;

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
   //  private ArrayAdapter<String> arrayAdapter;
     private int i;
     private MyAdapter arrayAdapter;
+    private TextView tv;
     //private int i;
     private ArrayList<String> a1; // = (ArrayList<String>) getIntent().getSerializableExtra("a1");
 
@@ -38,10 +40,23 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+                tv=(TextView) findViewById(R.id.tv1);
                 a1 = new ArrayList<>();
+                int x=(int)getIntent().getSerializableExtra("mapid");
+                if(x==1)
+                    tv.setText("Asia");
+                else if(x==2)
+                    tv.setText("Europe");
+                else if(x==3)
+                    tv.setText("America");
+                else if(x==4)
+                    tv.setText("Australia");
+                else if(x==5)
+                    tv.setText("Africa");
 
-                ArrayList<String> list1 = (ArrayList<String>) getIntent().getSerializableExtra("a1");
+
+
+        ArrayList<String> list1 = (ArrayList<String>) getIntent().getSerializableExtra("a1");
                 Log.d("suthar", list1.toString());
                 //final ArrayList<String> a1 =  (ArrayList<String>)getIntent().getSerializableExtra("FILES_TO_SEND");
 
