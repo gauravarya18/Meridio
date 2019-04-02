@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,9 +19,9 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button mLogin,mRegister;
+    private Button mLogin;
     private EditText mEmail, mPassword;
-
+    private TextView mRegister;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
 
@@ -66,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
         });
-        mRegister = (Button) findViewById(R.id.register);
+        mRegister = (TextView) findViewById(R.id.register);
 
 
 
@@ -75,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
                 startActivity(intent);
-                finish();
+
                 return;
             }
         });
