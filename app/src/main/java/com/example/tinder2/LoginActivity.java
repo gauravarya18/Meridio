@@ -51,7 +51,8 @@ public class LoginActivity extends AppCompatActivity {
 
         mEmail = (EditText) findViewById(R.id.email);
         mPassword = (EditText) findViewById(R.id.password);
-
+//        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        if(user!=null)
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
         });
+
         mRegister = (TextView) findViewById(R.id.register);
 
 

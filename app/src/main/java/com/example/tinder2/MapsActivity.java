@@ -118,6 +118,26 @@ int i=0;String Area;
                 {
                     Toast.makeText(this,"Africa",Toast.LENGTH_SHORT).show();i=5;Area="Africa";
                 }
+//                if (ct.closeMatch (Color.GREEN, touchColor, tolerance))
+//                {
+//                    Toast.makeText(this,"green",Toast.LENGTH_SHORT).show();i=6;Area="green";
+//                }
+//                if (ct.closeMatch (Color.RED, touchColor, tolerance))
+//                {
+//                    Toast.makeText(this,"red",Toast.LENGTH_SHORT).show();i=7;Area="red";
+//                }
+//                if (ct.closeMatch (Color.GRAY, touchColor, tolerance))
+//                {
+//                    Toast.makeText(this,"gray",Toast.LENGTH_SHORT).show();i=8;Area="gray";
+//                }
+//                if (ct.closeMatch (Color.LTGRAY, touchColor, tolerance))
+//                {
+//                    Toast.makeText(this,"ltgray",Toast.LENGTH_SHORT).show();i=9;Area="ltgray";
+//                }
+//                if (ct.closeMatch (Color.CYAN, touchColor, tolerance))
+//                {
+//                    Toast.makeText(this,"cyan",Toast.LENGTH_SHORT).show();i=10;Area="cyan";
+//                }
                 else
                 if (ct.closeMatch (Color.WHITE, touchColor, tolerance))
                 {

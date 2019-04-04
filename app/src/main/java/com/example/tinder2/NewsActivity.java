@@ -89,13 +89,49 @@ public class NewsActivity extends AppCompatActivity {
 
 
             while (i != 5)
-            {
+            { URL url,url1,url2,url3,url4;
                 try {
-                    URL url = new URL("http://feeds.feedburner.com/ndtvcooks-latest");
-                    URL url1 = new URL("http://feeds.feedburner.com/ndtvsports-latest");
-                    URL url2 = new URL("http://feeds.feedburner.com/gadgets360-latest");
-                    URL url3 = new URL("http://feeds.feedburner.com/ndtvprofit-latest");
-                    URL url4 = new URL("http://feeds.feedburner.com/ndtvnews-people");
+                    switch (x)
+                    {
+                        case 1: {
+                            url = new URL("http://feeds.feedburner.com/ndtvcooks-latest");
+                             url1 = new URL("http://feeds.feedburner.com/ndtvsports-latest");
+                             url2 = new URL("http://feeds.feedburner.com/gadgets360-latest");
+                            url3 = new URL("http://feeds.feedburner.com/ndtvprofit-latest");
+                             url4 = new URL("http://feeds.feedburner.com/ndtvnews-people");
+                        }
+                        case 2: {
+                            url = new URL("http://feeds.feedburner.com/ndtvcooks-latest");
+                            url1 = new URL("http://feeds.feedburner.com/ndtvsports-latest");
+                            url2 = new URL("http://feeds.feedburner.com/gadgets360-latest");
+                            url3 = new URL("http://feeds.feedburner.com/ndtvprofit-latest");
+                            url4 = new URL("http://feeds.feedburner.com/ndtvnews-people");
+                        }
+                        case 3: {
+                            url = new URL("http://feeds.feedburner.com/ndtvcooks-latest");
+                            url1 = new URL("http://feeds.feedburner.com/ndtvsports-latest");
+                            url2 = new URL("http://feeds.feedburner.com/gadgets360-latest");
+                            url3 = new URL("http://feeds.feedburner.com/ndtvprofit-latest");
+                            url4 = new URL("http://feeds.feedburner.com/ndtvnews-people");
+                        }
+                        case 4: {
+                            url = new URL("http://feeds.feedburner.com/AustradeEvents");
+                            url1 = new URL("http://feeds.feedburner.com/austradeeconomicanalysis");
+                            url2 = new URL("http://feeds.feedburner.com/AustraliaUnlimited");
+                            url3 = new URL("http://feeds.feedburner.com/austradeinsights");
+                            url4 = new URL("http://feeds.feedburner.com/AustradeLatest");
+                        }
+
+                        default: {
+                             url = new URL("http://feeds.feedburner.com/ndtvcooks-latest");
+                             url1 = new URL("http://feeds.feedburner.com/ndtvsports-latest");
+                             url2 = new URL("http://feeds.feedburner.com/gadgets360-latest");
+                            url3 = new URL("http://feeds.feedburner.com/ndtvprofit-latest");
+                             url4 = new URL("http://feeds.feedburner.com/ndtvnews-people");
+                        }
+                    }
+
+
 
 
                     //creates new instance of PullParserFactory that can be used to create XML pull parsers
