@@ -44,15 +44,19 @@ public class MainActivity extends AppCompatActivity {
                 a1 = new ArrayList<>();
                 int x=(int)getIntent().getSerializableExtra("mapid");
                 if(x==1)
-                    tv.setText("Asia");
+                    tv.setText("Latin America");
                 else if(x==2)
-                    tv.setText("Europe");
+                    tv.setText("North America");
                 else if(x==3)
-                    tv.setText("America");
-                else if(x==4)
                     tv.setText("Australia");
+                else if(x==4)
+                    tv.setText("Asia");
                 else if(x==5)
                     tv.setText("Africa");
+                else if(x==6)
+                    tv.setText("Arab");
+                else if(x==7)
+                    tv.setText("Europe");
 
 
 

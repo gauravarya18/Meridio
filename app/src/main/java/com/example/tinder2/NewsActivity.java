@@ -88,58 +88,71 @@ public class NewsActivity extends AppCompatActivity {
         protected Exception doInBackground(Integer... params) {
 
             String sample=String.valueOf(x);
-            while (i != 5)
-            { URL url=null,url1=null,url2=null,url3=null,url4=null;
-                Log.d("gai",sample);
+            while (i != 3)
+            { URL url=null,url1=null,url2=null;
+
                 try {
 //
                     switch (x)
                     {
 
                         case 1: {
-                            url = new URL("http://feeds.feedburner.com/ndtvcooks-latest");
-                             url1 = new URL("http://feeds.feedburner.com/ndtvsports-latest");
-                             url2 = new URL("http://feeds.feedburner.com/gadgets360-latest");
-                            url3 = new URL("http://feeds.feedburner.com/ndtvprofit-latest");
-                             url4 = new URL("http://feeds.feedburner.com/ndtvnews-people");
+                            url = new URL("https://www.telesurenglish.net/rss/sport.xml");
+                             url1 = new URL("https://www.telesurenglish.net/rss/culture.xml");
+                             url2 = new URL("https://www.telesurenglish.net/rss/latinaamerica.xml");
+
 
                         }
                         break;
                         case 2: {
-                            url = new URL("http://feeds.feedburner.com/ndtvcooks-latest");
-                            url1 = new URL("http://feeds.feedburner.com/ndtvsports-latest");
-                            url2 = new URL("http://feeds.feedburner.com/gadgets360-latest");
-                            url3 = new URL("http://feeds.feedburner.com/ndtvprofit-latest");
-                            url4 = new URL("http://feeds.feedburner.com/ndtvnews-people");
+                            url = new URL("https://api.foxsports.com/v1/rss?partnerKey=zBaFxRyGKCfxBagJG9b8pqLyndmvo7UU&tag=nba");
+                            url1 = new URL("http://feeds.bbci.co.uk/news/health/rss.xml");
+                            url2 = new URL("http://feeds.bbci.co.uk/news/politics/rss.xml");
+
                         }
                         break;
                         case 3: {
-                            url = new URL("http://feeds.feedburner.com/ndtvcooks-latest");
-                            url1 = new URL("http://feeds.feedburner.com/ndtvsports-latest");
-                            url2 = new URL("http://feeds.feedburner.com/gadgets360-latest");
-                            url3 = new URL("http://feeds.feedburner.com/ndtvprofit-latest");
-                            url4 = new URL("http://feeds.feedburner.com/ndtvnews-people");
+                            url = new URL("https://www.news.com.au/content-feeds/latest-news-sport/");
+                            url1 = new URL("https://www.news.com.au/content-feeds/latest-news-lifestyle/");
+                            url2 = new URL("https://www.news.com.au/content-feeds/latest-news-national/");
+
                         }
                         break;
                         case 4: {
-                            Log.d("ga",sample);
-                            url = new URL("http://feeds.feedburner.com/AustradeEvents");
-                            url1 = new URL("http://feeds.feedburner.com/austradeeconomicanalysis");
-                            url2 = new URL("http://feeds.feedburner.com/AustraliaUnlimited");
-                            url3 = new URL("http://feeds.feedburner.com/austradeinsights");
-                            url4 = new URL("http://feeds.feedburner.com/AustradeLatest");
+
+                            url = new URL("https://www.asianetnews.net/rss/news-releases/sport");
+                            url1 = new URL("https://www.asianetnews.net/rss/news-releases/health-medical");
+                            url2 = new URL("https://www.asianetnews.net/rss/news-releases/social-welfare");
 
                         }
                         break;
 
                         case 5: {
-                            Log.d("g",sample);
-                             url = new URL("http://feeds.feedburner.com/ndtvcooks-latest");
-                             url1 = new URL("http://feeds.feedburner.com/ndtvsports-latest");
-                             url2 = new URL("http://feeds.feedburner.com/gadgets360-latest");
-                            url3 = new URL("http://feeds.feedburner.com/ndtvprofit-latest");
-                             url4 = new URL("http://feeds.feedburner.com/ndtvnews-people");
+
+                             url = new URL("http://feeds.reuters.com/reuters/AFRICASportNews");
+                             url1 = new URL("https://www.afro.who.int/rss/featured-news.xml");
+                             url2 = new URL("http://feeds.reuters.com/reuters/AFRICATopNews");
+
                         }
+                        break;
+
+                        case 6: {
+
+                            url = new URL("http://www.arabnews.com/cat/5/rss.xml");
+                            url1 = new URL("http://www.arabnews.com/cat/2/rss.xml");
+                            url2 = new URL("http://www.arabnews.com/cat/2/rss.xml");
+
+                        }
+                        break;
+
+                        case 7: {
+
+                            url = new URL("https://api.foxsports.com/v1/rss?partnerKey=zBaFxRyGKCfxBagJG9b8pqLyndmvo7UU&tag=soccer");
+                            url1 = new URL("http://europa.eu/rapid/search-result.htm?query=89&language=EN&format=RSS");
+                            url2 = new URL("http://europa.eu/rapid/search-result.htm?query=55&language=EN&format=RSS");
+
+                        }
+
                     }
 
 
@@ -163,10 +176,6 @@ public class NewsActivity extends AppCompatActivity {
                         xpp.setInput(getInputStream(url1), "UTF_8");
                     if (i == 2)
                         xpp.setInput(getInputStream(url2), "UTF_8");
-                    if (i == 3)
-                        xpp.setInput(getInputStream(url3), "UTF_8");
-                    if (i == 4)
-                        xpp.setInput(getInputStream(url4), "UTF_8");
 
                     /* We will parse the XML content looking for the "<title>" tag which appears inside the "<item>" tag.
                      * We should take into consideration that the rss feed name is also enclosed in a "<title>" tag.
@@ -194,6 +203,8 @@ public class NewsActivity extends AppCompatActivity {
                                     // extract the text between <title> and </title>
 
                                     titles.add(xpp.nextText());
+                                    count++;
+                                    if(count==2)
                                     break;
                                     // Log.d("gaurav",titles.toString());
                                 }
