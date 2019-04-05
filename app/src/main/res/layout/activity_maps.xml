@@ -1,35 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/my_frame"
+<com.example.tinder2.ZoomView
+    android:id="@+id/zoom"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ffffff" >
 
-    <ImageView
-        android:id="@+id/image_areas"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scaleType="fitCenter"
-        android:scaleX="2"
-        android:scaleY="1.8"
+    android:layout_centerInParent="true"
+    android:background="#000421"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-        android:rotation="90"
-        android:src="@drawable/map_mask"
-        android:visibility="invisible"
-        />
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scaleType="fitCenter"
-        android:scaleX="2"
-        android:scaleY="1.8"
+   <RelativeLayout
+        android:id="@+id/zoomView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       >
+        <ImageView
+            android:id="@+id/image"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:scaleType="fitCenter"
+            android:clickable="true"
+            android:src="@drawable/map_default" >
 
-        android:rotation="90"
-        android:src="@drawable/map_default"
-        />
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/image_areas"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="fitCenter"
+            android:layout_x="118dip"
+            android:layout_y="30dip"
+            android:src="@drawable/map_mask"
+            android:visibility="invisible">
+        </ImageView>
+   </RelativeLayout>
+
+</com.example.tinder2.ZoomView>
+<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:id="@+id/my_frame"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--android:background="#ffffff" >-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/image_areas"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:scaleType="fitCenter"-->
+        <!--android:scaleX="2"-->
+        <!--android:scaleY="1.8"-->
+
+        <!--android:rotation="90"-->
+        <!--android:src="@drawable/map_mask"-->
+        <!--android:visibility="invisible"-->
+        <!--/>-->
+    <!--<ImageView-->
+        <!--android:id="@+id/image"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:scaleType="fitCenter"-->
+        <!--android:scaleX="1.8"-->
+        <!--android:scaleY="1.6"-->
+
+        <!--android:rotation="90"-->
+        <!--android:src="@drawable/map_default"-->
+        <!--/>-->
 
 
 
-</FrameLayout>
+<!--</FrameLayout>-->
 

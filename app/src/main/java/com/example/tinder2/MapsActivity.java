@@ -78,7 +78,7 @@ int i=0;String Area;
         switch (action) {
             case MotionEvent.ACTION_DOWN :
                 if (currentResource == R.drawable.map_default) {
-                    nextImage = R.drawable.map_pressed;
+                    nextImage = R.drawable.map_default;
                     handledHere = true;
        /*
        } else if (currentResource != R.drawable.p2_ship_default) {
@@ -102,42 +102,38 @@ int i=0;String Area;
                 ColorTool ct = new ColorTool ();
                 int tolerance = 0;
                 nextImage = R.drawable.map_default;
-                if (ct.closeMatch (Color.BLUE, touchColor, tolerance)) {
-                    Toast.makeText(this,"Asia",Toast.LENGTH_SHORT).show();i=1;Area="Asia";
-                }
-                if (ct.closeMatch (Color.MAGENTA, touchColor, tolerance)) {
-                    Toast.makeText(this,"Europe",Toast.LENGTH_SHORT).show();i=2;Area="Europe";
-                }
-                if (ct.closeMatch (Color.BLACK, touchColor, tolerance)){
-                    Toast.makeText(this,"America",Toast.LENGTH_SHORT).show();i=3;Area="America";
+
+
+
+
+                if (ct.closeMatch (Color.RED, touchColor, tolerance))
+                {
+                    Toast.makeText(this,"Latin America",Toast.LENGTH_SHORT).show();i=1;Area="Latin America";
                 }
                 if (ct.closeMatch (Color.YELLOW, touchColor, tolerance)){
-                    Toast.makeText(this,"Australia",Toast.LENGTH_SHORT).show();i=4;Area="Australia";
+                    Toast.makeText(this,"North America",Toast.LENGTH_SHORT).show();i=2;Area="North America";
+                }
+
+                if (ct.closeMatch (Color.GRAY, touchColor, tolerance))
+                {
+                    Toast.makeText(this,"Australia",Toast.LENGTH_SHORT).show();i=3;Area="Australia";
                 }
                 if (ct.closeMatch (Color.DKGRAY, touchColor, tolerance))
                 {
+                    Toast.makeText(this,"Asia",Toast.LENGTH_SHORT).show();i=4;Area="Asia";
+                }
+                if (ct.closeMatch (Color.CYAN, touchColor, tolerance))
+                {
                     Toast.makeText(this,"Africa",Toast.LENGTH_SHORT).show();i=5;Area="Africa";
                 }
-//                if (ct.closeMatch (Color.GREEN, touchColor, tolerance))
-//                {
-//                    Toast.makeText(this,"green",Toast.LENGTH_SHORT).show();i=6;Area="green";
-//                }
-//                if (ct.closeMatch (Color.RED, touchColor, tolerance))
-//                {
-//                    Toast.makeText(this,"red",Toast.LENGTH_SHORT).show();i=7;Area="red";
-//                }
-//                if (ct.closeMatch (Color.GRAY, touchColor, tolerance))
-//                {
-//                    Toast.makeText(this,"gray",Toast.LENGTH_SHORT).show();i=8;Area="gray";
-//                }
-//                if (ct.closeMatch (Color.LTGRAY, touchColor, tolerance))
-//                {
-//                    Toast.makeText(this,"ltgray",Toast.LENGTH_SHORT).show();i=9;Area="ltgray";
-//                }
-//                if (ct.closeMatch (Color.CYAN, touchColor, tolerance))
-//                {
-//                    Toast.makeText(this,"cyan",Toast.LENGTH_SHORT).show();i=10;Area="cyan";
-//                }
+                if (ct.closeMatch (Color.GREEN, touchColor, tolerance))
+                {
+                    Toast.makeText(this,"Arab",Toast.LENGTH_SHORT).show();i=6;Area="Arab";
+                }
+                if (ct.closeMatch (Color.MAGENTA, touchColor, tolerance)) {
+                    Toast.makeText(this,"Europe",Toast.LENGTH_SHORT).show();i=7;Area="Europe";
+                }
+
                 else
                 if (ct.closeMatch (Color.WHITE, touchColor, tolerance))
                 {
@@ -159,7 +155,7 @@ int i=0;String Area;
                                  intent.putExtra("mapid", i);
                                  startActivity(intent);
 
-                                 finish();
+
 
                              }
                          });

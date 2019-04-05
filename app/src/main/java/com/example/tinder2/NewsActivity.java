@@ -87,19 +87,24 @@ public class NewsActivity extends AppCompatActivity {
         @Override
         protected Exception doInBackground(Integer... params) {
 
-
+            String sample=String.valueOf(x);
             while (i != 5)
-            { URL url,url1,url2,url3,url4;
+            { URL url=null,url1=null,url2=null,url3=null,url4=null;
+                Log.d("gai",sample);
                 try {
+//
                     switch (x)
                     {
+
                         case 1: {
                             url = new URL("http://feeds.feedburner.com/ndtvcooks-latest");
                              url1 = new URL("http://feeds.feedburner.com/ndtvsports-latest");
                              url2 = new URL("http://feeds.feedburner.com/gadgets360-latest");
                             url3 = new URL("http://feeds.feedburner.com/ndtvprofit-latest");
                              url4 = new URL("http://feeds.feedburner.com/ndtvnews-people");
+
                         }
+                        break;
                         case 2: {
                             url = new URL("http://feeds.feedburner.com/ndtvcooks-latest");
                             url1 = new URL("http://feeds.feedburner.com/ndtvsports-latest");
@@ -107,6 +112,7 @@ public class NewsActivity extends AppCompatActivity {
                             url3 = new URL("http://feeds.feedburner.com/ndtvprofit-latest");
                             url4 = new URL("http://feeds.feedburner.com/ndtvnews-people");
                         }
+                        break;
                         case 3: {
                             url = new URL("http://feeds.feedburner.com/ndtvcooks-latest");
                             url1 = new URL("http://feeds.feedburner.com/ndtvsports-latest");
@@ -114,15 +120,20 @@ public class NewsActivity extends AppCompatActivity {
                             url3 = new URL("http://feeds.feedburner.com/ndtvprofit-latest");
                             url4 = new URL("http://feeds.feedburner.com/ndtvnews-people");
                         }
+                        break;
                         case 4: {
+                            Log.d("ga",sample);
                             url = new URL("http://feeds.feedburner.com/AustradeEvents");
                             url1 = new URL("http://feeds.feedburner.com/austradeeconomicanalysis");
                             url2 = new URL("http://feeds.feedburner.com/AustraliaUnlimited");
                             url3 = new URL("http://feeds.feedburner.com/austradeinsights");
                             url4 = new URL("http://feeds.feedburner.com/AustradeLatest");
-                        }
 
-                        default: {
+                        }
+                        break;
+
+                        case 5: {
+                            Log.d("g",sample);
                              url = new URL("http://feeds.feedburner.com/ndtvcooks-latest");
                              url1 = new URL("http://feeds.feedburner.com/ndtvsports-latest");
                              url2 = new URL("http://feeds.feedburner.com/gadgets360-latest");
