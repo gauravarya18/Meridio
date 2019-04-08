@@ -154,6 +154,7 @@ int i=0;String Area;
                                  Intent intent = new Intent(MapsActivity.this, ChooseTask.class);
                                  intent.putExtra("mapid", i);
                                  startActivity(intent);
+                                 finish();
 
 
 

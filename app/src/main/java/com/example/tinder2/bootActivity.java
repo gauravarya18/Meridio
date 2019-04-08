@@ -112,6 +112,9 @@ public class bootActivity extends AppCompatActivity {
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.zoom_out);
+                mLogin.startAnimation(animation);
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(bootActivity.this, new OnCompleteListener<AuthResult>() {

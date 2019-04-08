@@ -1,5 +1,6 @@
 package com.example.tinder2;
 
+import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -42,10 +43,18 @@ public class ChooseTask extends AppCompatActivity {
     Animation atg, atgtwo, atgthree;
     ImageView imageView3,profilepic;
     ImageButton iclist,icapps,icplug,icnet;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_task);
+
+
+
+
+
         final int x= (int)getIntent().getSerializableExtra("mapid");
         atg = AnimationUtils.loadAnimation(this, R.anim.atg);
         atgtwo = AnimationUtils.loadAnimation(this, R.anim.atgtwo);
@@ -71,6 +80,9 @@ public class ChooseTask extends AppCompatActivity {
         icapps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.zoom_out);
+                icapps.startAnimation(animation);
                 Intent intent = new Intent(ChooseTask.this, SettingsActivity.class);
                 startActivity(intent);
 
@@ -81,6 +93,9 @@ public class ChooseTask extends AppCompatActivity {
         icnet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.zoom_out);
+                icnet.startAnimation(animation);
                 Intent intent = new Intent(ChooseTask.this, DashboardActivity.class);
                 startActivity(intent);
 
@@ -91,6 +106,9 @@ public class ChooseTask extends AppCompatActivity {
         icplug.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.zoom_out);
+                icplug.startAnimation(animation);
                 Intent intent = new Intent(ChooseTask.this, ProfileActivity.class);
                 startActivity(intent);
 
@@ -101,9 +119,14 @@ public class ChooseTask extends AppCompatActivity {
         iclist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.zoom_out);
+                iclist.startAnimation(animation);
                 Intent intent = new Intent(ChooseTask.this, NewsActivity.class);
                 intent.putExtra("mapid",x);
                 startActivity(intent);
+                finish();
+
 
                 return;
             }
@@ -121,6 +144,9 @@ public class ChooseTask extends AppCompatActivity {
         btnguide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.zoom_in);
+                btnguide.startAnimation(animation);
                 Intent a = new Intent(ChooseTask.this,GuideActivity.class);
                 startActivity(a);
             }
@@ -205,6 +231,7 @@ public class ChooseTask extends AppCompatActivity {
 //        intent.setAction(Intent.ACTION_GET_CONTENT);
 //        startActivityForResult(Intent.createChooser(intent,"select profile pic"), CHOOSE_IMAGE);
 //   }
+
 
 }
 

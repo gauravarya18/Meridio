@@ -109,7 +109,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginBottom="8dp"
-                    android:src="@drawable/play"
+                    android:src="@drawable/play_ic"
                     android:background="@drawable/button_dash"
                     android:id="@+id/play"/>
 
@@ -135,7 +135,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginBottom="8dp"
-                    android:src="@drawable/score"
+                    android:src="@drawable/progress_ic"
                     android:background="@null"
                     android:id="@+id/dashboard"/>
 
@@ -158,18 +158,19 @@
                 android:orientation="vertical">
 
                 <ImageButton
+                    android:id="@+id/profile"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginBottom="8dp"
-                    android:src="@drawable/profile"
-                    android:id="@+id/profile"/>
+                    android:background="@drawable/button_dash"
+                    android:src="@drawable/profile_ic" />
 
                 <TextView
                     android:id="@+id/profile_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Profile"
                     android:fontFamily="@font/mm"
+                    android:text="Profile"
                     android:textColor="#172646"
                     android:textSize="16sp" />
 
@@ -186,7 +187,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginBottom="8dp"
-                    android:src="@drawable/settings"
+                    android:src="@drawable/settings_ic"
                     android:background="@drawable/button_dash"
                     android:id="@+id/settings"/>
 

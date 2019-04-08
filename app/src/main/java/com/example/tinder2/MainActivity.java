@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<String> al;
   //  private ArrayAdapter<String> arrayAdapter;
-    private int i;
+    private int i,a;
     private MyAdapter arrayAdapter;
     private TextView tv;
     //private int i;
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 tv=(TextView) findViewById(R.id.tv1);
                 a1 = new ArrayList<>();
                 int x=(int)getIntent().getSerializableExtra("mapid");
+                a=x;
                 if(x==1)
                     tv.setText("Latin America");
                 else if(x==2)
@@ -133,7 +134,16 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, bootActivity.class);
             startActivity(intent);
             finish();
+
             return;
         }
+    @Override
+    public void onBackPressed() {
+
+        finish();
+        Intent intent = new Intent(MainActivity.this, ChooseTask.class);
+        intent.putExtra("mapid",a);
+        startActivity(intent);
+    }
 
     }
