@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChooseLoginRegistration"
-    android:orientation="vertical">
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="login"
-        android:id="@+id/login"/>
+    tools:context=".GuideActivity"
+    android:orientation="vertical"
+    android:background="#fff">
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="50dp"
+       android:text="Guide"/>
 
 
 </LinearLayout>

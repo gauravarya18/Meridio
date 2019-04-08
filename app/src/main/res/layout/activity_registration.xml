@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".registration"
+    tools:context=".RegistrationActivity"
     android:orientation="vertical"
     android:background="@drawable/gradient">
 
@@ -16,19 +16,19 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:textColorHint="#808080"
-        android:textColor="#000000"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/round_text"
+        android:background="@drawable/round_text1"
         android:hint="Full name"
         android:inputType="text"
         android:padding="2mm"
+        android:textColor="#000000"
+        android:textColorHint="#808080"
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.797" />
+        app:layout_constraintVertical_bias="0.904" />
 
     <EditText
         android:id="@+id/email"
@@ -40,7 +40,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="20dp"
         android:padding="2mm"
-        android:background="@drawable/round_text"
+        android:background="@drawable/round_text1"
         android:hint="Email"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/contact"
@@ -57,7 +57,7 @@
         android:layout_marginEnd="8dp"
         android:textColorHint="#808080"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/round_text"
+        android:background="@drawable/round_text1"
         android:hint="Contact"
         android:inputType="phone"
         app:layout_constraintBottom_toTopOf="@+id/password"
@@ -75,7 +75,7 @@
         android:layout_marginBottom="20dp"
 
         android:textColorHint="#808080"
-        android:background="@drawable/round_text"
+        android:background="@drawable/round_text1"
         android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/confirmpassword"
@@ -90,7 +90,7 @@
         android:textColor="#000000"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="56dp"
-        android:background="@drawable/round_text"
+        android:background="@drawable/round_text1"
         android:textColorHint="#808080"
         android:hint="Confirm password"
         android:padding="2mm"
@@ -105,53 +105,14 @@
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="132dp"
         android:background="@drawable/round"
+
         android:text="Create my account"
-
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/othersignin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/othersignin"
-        android:layout_width="185dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
-        android:text="   or Sign up using..."
-        android:textColor="#ffffff"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/google"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/google"
-        android:layout_width="175dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="20dp"
-        android:background="#dd4b39"
-        android:text="Google"
-        app:layout_constraintBottom_toTopOf="@+id/facebook"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/facebook"
-        android:layout_width="175dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
-        android:background="#3b5998"
-        android:text="Facebook"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>
