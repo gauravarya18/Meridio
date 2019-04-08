@@ -266,4 +266,12 @@ int i=0;String Area;
         Toast.makeText (getApplicationContext(), msg, Toast.LENGTH_LONG).show ();
     } // end toast
 
+    @Override
+    public void onBackPressed() {
+
+        finish();
+//        Intent intent = new Intent(MapsActivity.this,bootActivity.class);
+//        startActivity(intent);
+    }
+
 } // end class

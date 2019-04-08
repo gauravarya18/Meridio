@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
@@ -37,10 +38,10 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user !=null){
-                    Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
-                    startActivity(intent);
+//                    Intent intent = new Intent(RegistrationActivity.this, MapsActivity.class);
+//                    startActivity(intent);
                     finish();
-                    return;
+//                    return;
                 }
             }
         };
@@ -61,14 +62,52 @@ public class RegistrationActivity extends AppCompatActivity {
                 final String password = mPassword.getText().toString();
                 final String name=mName.getText().toString();
                 final String contact=mContact.getText().toString();
+                if(email.isEmpty())
+                {
+                    mEmail.setError("Email is required");
+                    mEmail.requestFocus();
+                    return;
+                }
+                if(name.isEmpty())
+                {
+                    mEmail.setError("Email is required");
+                    mEmail.requestFocus();
+                    return;
+                }
+                if(contact.isEmpty())
+                {
+                    mEmail.setError("Email is required");
+                    mEmail.requestFocus();
+                    return;
+                }
+                if(password.isEmpty())
+                {
+                    mPassword.setError("Password is required");
+                    mPassword.requestFocus();
+                    return;
+                }
+                if(password.length()<6)
+                {
+                    mPassword.setError("Minimum length of password must be 6");
+                    mPassword.requestFocus();
+                    return;
+                }
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(RegistrationActivity.this, "sign up error", Toast.LENGTH_SHORT).show();
+                            if(task.getException() instanceof FirebaseAuthUserCollisionException)
+                            {
+                                Toast.makeText(RegistrationActivity.this, "You are already registered", Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                Toast.makeText(RegistrationActivity.this,task.getException().getMessage() , Toast.LENGTH_SHORT).show();
+                            }
                         }
                         else
                         {
+
                             String userId=mAuth.getCurrentUser().getUid();
                             DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("users").child(userId).child("name");
                             currentUserDb.setValue(name);
@@ -77,6 +116,9 @@ public class RegistrationActivity extends AppCompatActivity {
                             UserProfileChangeRequest profile =new UserProfileChangeRequest.Builder()
                             .setDisplayName(name)
                                     .build();
+//                            Intent intent=new Intent(RegistrationActivity.this,MapsActivity.class);
+//                            startActivity(intent);
+//                            finish();
 
 
 

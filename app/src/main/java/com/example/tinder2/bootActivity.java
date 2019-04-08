@@ -109,6 +109,7 @@ public class bootActivity extends AppCompatActivity {
         mPassword = (EditText) findViewById(R.id.password);
 //        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 //        if(user!=null)
+
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,11 +118,30 @@ public class bootActivity extends AppCompatActivity {
                 mLogin.startAnimation(animation);
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
+                if(email.isEmpty())
+                {
+                    mEmail.setError("Email is required");
+                    mEmail.requestFocus();
+                    return;
+                }
+
+                if(email.isEmpty())
+                {
+                    mPassword.setError("Password is required");
+                    mPassword.requestFocus();
+                    return;
+                }
+                if(password.length()<6)
+                {
+                    mPassword.setError("Minimum length of password must be 6");
+                    mPassword.requestFocus();
+                    return;
+                }
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(bootActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(bootActivity.this, "sign in error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(bootActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
