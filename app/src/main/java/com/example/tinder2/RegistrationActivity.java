@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -113,9 +114,11 @@ public class RegistrationActivity extends AppCompatActivity {
                             currentUserDb.setValue(name);
                             DatabaseReference currentUserDb1 = FirebaseDatabase.getInstance().getReference().child("users").child(userId).child("contact");
                             currentUserDb1.setValue(contact);
+
                             UserProfileChangeRequest profile =new UserProfileChangeRequest.Builder()
                             .setDisplayName(name)
                                     .build();
+
 //                            Intent intent=new Intent(RegistrationActivity.this,MapsActivity.class);
 //                            startActivity(intent);
 //                            finish();
