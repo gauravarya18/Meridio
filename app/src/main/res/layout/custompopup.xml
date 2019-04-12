@@ -9,6 +9,21 @@
     android:orientation="vertical"
     android:padding="5dp">
 
+    <!--<ProgressBar-->
+        <!--android:id="@+id/simpleProgressBar"-->
+        <!--android:layout_width="95dp"-->
+        <!--android:layout_height="84dp"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="240dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+       <!---->
+        <!--android:visibility="invisible"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.033"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
     <TextView
         android:id="@+id/txtclose"
         android:layout_width="30dp"
@@ -78,8 +93,24 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="64dp"
         android:text="Age"
+        android:textColor="@color/White"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/genderpop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="28dp"
+        android:text="Gender"
         android:textColor="@color/White"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

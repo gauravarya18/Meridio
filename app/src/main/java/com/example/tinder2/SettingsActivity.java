@@ -35,14 +35,14 @@ int a;
         });
 
     }
-    public void logoutUser (View view){
-        mAuth.signOut();
-        Intent intent = new Intent(SettingsActivity.this, bootActivity.class);
-        startActivity(intent);
-        finish();
-
-        return;
-    }
+//    public void logoutUser (View view){
+//        mAuth.signOut();
+//        Intent intent = new Intent(SettingsActivity.this, bootActivity.class);
+//        startActivity(intent);
+//        finish();
+//
+//        return;
+//    }
     @Override
     public void onBackPressed() {
 

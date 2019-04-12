@@ -20,25 +20,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+
+
     <ImageView
         android:id="@+id/topuserpic"
         android:layout_width="71dp"
         android:layout_height="71dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="26dp"
-        android:src="@drawable/userpic"
+        android:src="@drawable/profile_ic"
         android:onClick="ShowPopup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <ProgressBar
-        android:layout_width="71dp"
-        android:id="@+id/progress_bar"
-        android:visibility="gone"
-        android:layout_height="71dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="26dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+
 
     <TextView
         android:id="@+id/nameuser"
@@ -155,14 +149,15 @@
                     android:layout_height="60dp"
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/button_dash"
-                    android:src="@drawable/profile_ic" />
+                    android:src="@drawable/logout_ic"
+                    android:onClick="logoutUser"/>
 
                 <TextView
                     android:id="@+id/profile_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/mm"
-                    android:text="Profile"
+                    android:text="Logout"
                     android:textColor="#172646"
                     android:textSize="16sp" />
 

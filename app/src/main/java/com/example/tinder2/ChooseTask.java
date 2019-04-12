@@ -1,6 +1,7 @@
 package com.example.tinder2;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -31,6 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import android.app.ProgressDialog;
 
 import org.w3c.dom.Text;
 
@@ -44,13 +46,14 @@ public class ChooseTask extends AppCompatActivity {
     int x;
     Uri uri;
     TextView nameuser, walletuser, pagetitle, pagesubtitle;
-    ProgressBar prbar;
+    ProgressDialog progressDialog;
     FirebaseAuth mAuth;
     Button btnguide;
     Animation atg, atgtwo, atgthree;
     ImageView imageView3, profilepic;
     ImageButton iclist, icapps, icplug, icnet;
     Dialog myDialog;
+    String m="Male";
 
     private Button btnChoose, btnUpload;
     private ImageView imageView;
@@ -65,7 +68,6 @@ public class ChooseTask extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_task);
 
-
         myDialog = new Dialog(this);
 
 
@@ -75,7 +77,7 @@ public class ChooseTask extends AppCompatActivity {
         atgthree = AnimationUtils.loadAnimation(this, R.anim.atgthree);
         mAuth = FirebaseAuth.getInstance();
         nameuser = findViewById(R.id.nameuser);
-        prbar = findViewById(R.id.progress_bar);
+
 
 
         imageView3 = findViewById(R.id.imageView3);
@@ -113,19 +115,19 @@ public class ChooseTask extends AppCompatActivity {
                 return;
             }
         });
-        icplug = findViewById(R.id.profile);
-        icplug.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
-                        R.anim.zoom_out);
-                icplug.startAnimation(animation);
-                Intent intent = new Intent(ChooseTask.this, ProfileActivity.class);
-                startActivity(intent);
-
-                return;
-            }
-        });
+//        icplug = findViewById(R.id.profile);
+//        icplug.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
+//                        R.anim.zoom_out);
+//                icplug.startAnimation(animation);
+//                Intent intent = new Intent(ChooseTask.this, ProfileActivity.class);
+//                startActivity(intent);
+//
+//                return;
+//            }
+//        });
         iclist = findViewById(R.id.play);
         iclist.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,16 +177,22 @@ public class ChooseTask extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference("users/" + mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+
+
                 Log.d("suthar", dataSnapshot.toString());
                 String name = dataSnapshot.child("name").getValue(String.class);
                 String url = dataSnapshot.child("url").getValue(String.class);
-                topname.setText("Hi "+name);
+                topname.setText("Hi, "+name +"!");
 
 
                 Glide.with(ChooseTask.this)
                         .load(url)
+                        .placeholder(R.drawable.profile_ic)
                         .apply(RequestOptions.circleCropTransform())
                         .into(userimg);
+
             }
 
             @Override
@@ -219,6 +227,9 @@ public class ChooseTask extends AppCompatActivity {
         imageView = myDialog.findViewById(R.id.userpic);
         final TextView mName = myDialog.findViewById(R.id.name);
         final TextView mAge = myDialog.findViewById(R.id.age);
+        final TextView mGender =myDialog.findViewById(R.id.genderpop);
+        //final ProgressBar progressBar=myDialog.findViewById(R.id.simpleProgressBar);
+
 
         btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -230,18 +241,28 @@ public class ChooseTask extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference("users/" + mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
                 Log.d("suthar", dataSnapshot.toString());
                 String name = dataSnapshot.child("name").getValue(String.class);
                 String age = dataSnapshot.child("age").getValue(String.class);
                 String url = dataSnapshot.child("url").getValue(String.class);
+                String gender= dataSnapshot.child("gender").getValue().toString();
 
                 mName.setText(name);
                 mAge.setText(age+" yrs");
 
+
+
+                    mGender.setText(gender);
+
+
                 Glide.with(ChooseTask.this)
                         .load(url)
+                        .placeholder(R.drawable.profile_ic)
                         .apply(RequestOptions.circleCropTransform())
                         .into(imageView);
+
             }
 
             @Override
@@ -256,6 +277,7 @@ public class ChooseTask extends AppCompatActivity {
 //                uploadImage();
 //            }
 //        });
+
 //
     }
 
@@ -273,6 +295,8 @@ public class ChooseTask extends AppCompatActivity {
             filePath = data.getData();
             // Glide.with(this).load(filePath).into(imageView);
             uploadImage(filePath);
+            //ProgressDialog(ChooseTask.this);
+
         }
     }
 
@@ -318,7 +342,14 @@ public class ChooseTask extends AppCompatActivity {
     }
 
 
+    public void logoutUser (View view){
+        mAuth.signOut();
+        Intent intent = new Intent(ChooseTask.this, bootActivity.class);
+        startActivity(intent);
+        finish();
 
+        return;
+    }
 
 
 }

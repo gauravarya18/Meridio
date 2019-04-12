@@ -1,5 +1,6 @@
 package com.example.tinder2;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.ProgressDialog;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -113,6 +115,10 @@ public class bootActivity extends AppCompatActivity {
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                ProgressDialog progressDialog = new ProgressDialog(bootActivity.this);
+                progressDialog.setMessage("Authenticating" +"\n"+ "please wait...");
+                progressDialog.show();
                 Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.zoom_out);
                 mLogin.startAnimation(animation);
@@ -145,6 +151,8 @@ public class bootActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+                progressDialog.dismiss();;
             }
         });
 

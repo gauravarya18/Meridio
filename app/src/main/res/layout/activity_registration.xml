@@ -35,16 +35,17 @@
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
-        android:textColorHint="#808080"
-        android:textColor="#000000"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="20dp"
-        android:padding="2mm"
         android:background="@drawable/round_text1"
         android:hint="Email"
         android:inputType="textEmailAddress"
+        android:padding="2mm"
+        android:textColor="#000000"
+        android:textColorHint="#808080"
         app:layout_constraintBottom_toTopOf="@+id/age"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -52,52 +53,92 @@
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
-        android:padding="2mm"
-        android:textColor="#000000"
         android:layout_marginEnd="8dp"
-        android:textColorHint="#808080"
         android:layout_marginBottom="20dp"
         android:background="@drawable/round_text1"
         android:hint="Age"
         android:inputType="phone"
+        android:padding="2mm"
+        android:textColor="#000000"
+        android:textColorHint="#808080"
         app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/password"
-        android:padding="2mm"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:textColor="#000000"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="20dp"
 
-        android:textColorHint="#808080"
+
+        android:layout_marginBottom="52dp"
         android:background="@drawable/round_text1"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/confirmpassword"
+        android:padding="2mm"
+        android:textColor="#000000"
+        android:textColorHint="#808080"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/confirmpassword"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:textColor="#000000"
+    <!--<EditText-->
+        <!--android:id="@+id/gender"-->
+        <!--android:layout_width="350dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+
+
+        <!--android:layout_marginBottom="252dp"-->
+        <!--android:background="@drawable/round_text1"-->
+        <!--android:hint="gender"-->
+        <!--android:inputType="text"-->
+        <!--android:padding="2mm"-->
+        <!--android:textColor="#000000"-->
+        <!--android:textColorHint="#808080"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.511"-->
+        <!--app:layout_constraintStart_toStartOf="parent" />-->
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/radioGroup"
+        android:layout_width="317dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="44dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="56dp"
-        android:background="@drawable/round_text1"
-        android:textColorHint="#808080"
-        android:hint="--GENDER--"
-        android:padding="2mm"
-        android:inputType="textPassword"
+        android:layout_marginBottom="36dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/register"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Male"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+        <RadioButton
+            android:id="@+id/female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Female"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+    </RadioGroup>
 
     <Button
         android:id="@+id/register"
@@ -114,5 +155,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
+
+
+    />
 
 </android.support.constraint.ConstraintLayout>

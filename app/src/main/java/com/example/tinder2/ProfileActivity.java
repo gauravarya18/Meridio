@@ -33,6 +33,7 @@ public class ProfileActivity extends AppCompatActivity {
         final TextView mName=findViewById(R.id.name);
         final TextView mAge=findViewById(R.id.age);
         final ImageView img=findViewById(R.id.profile_image);
+        final TextView mGender=findViewById(R.id.gender);
         FirebaseDatabase.getInstance().getReference("users/" + user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -40,11 +41,14 @@ public class ProfileActivity extends AppCompatActivity {
                 String name = dataSnapshot.child("name").getValue(String.class);
                 String number = dataSnapshot.child("age").getValue(String.class);
                 String url = dataSnapshot.child("url").getValue(String.class);
+                String gender =dataSnapshot.child("gender").getValue().toString();
                 mAge.setText(number);
                 mName.setText(name);
+                mGender.setText(gender);
 
                 Glide.with(ProfileActivity.this)
                         .load(url)
+                        .placeholder(R.drawable.profile_ic)
                         .apply(RequestOptions.circleCropTransform())
                         .into(img);
             }

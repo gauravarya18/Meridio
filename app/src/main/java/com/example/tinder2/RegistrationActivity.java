@@ -9,7 +9,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
+
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,8 +32,10 @@ public class RegistrationActivity extends AppCompatActivity {
     private Button mRegister;
     private EditText mEmail, mPassword;
     private EditText mAge, mName;
+
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
+   String mGender=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +65,7 @@ public class RegistrationActivity extends AppCompatActivity {
         mName = (EditText) findViewById(R.id.name);
         mAge = (EditText) findViewById(R.id.age);
 
+
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +73,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 final String password = mPassword.getText().toString();
                 final String name = mName.getText().toString();
                 final String age = mAge.getText().toString();
+                final String gender=String.valueOf(mGender);
                 if (email.isEmpty()) {
                     mEmail.setError("Email is required");
                     mEmail.requestFocus();
@@ -92,6 +99,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     mPassword.requestFocus();
                     return;
                 }
+
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -107,17 +115,10 @@ public class RegistrationActivity extends AppCompatActivity {
                             HashMap<String, Object> map = new HashMap<>();
                             map.put("name", name);
                             map.put("age", age);
+                            map.put("gender",mGender);
+
 
                             FirebaseDatabase.getInstance().getReference("users/" + userId).setValue(map);
-
-//                            UserProfileChangeRequest profile =new UserProfileChangeRequest.Builder()
-//                            .setDisplayName(name)
-//                                    .build();
-
-//                            Intent intent=new Intent(RegistrationActivity.this,MapsActivity.class);
-//                            startActivity(intent);
-//                            finish();
-
 
                         }
                     }
@@ -141,4 +142,22 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onStop();
         mAuth.removeAuthStateListener(firebaseAuthStateListener);
     }
+
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.male:
+                if (checked)
+                    mGender="Male";
+                    break;
+            case R.id.female:
+                if (checked)
+                    mGender="Female";
+                    break;
+        }
+    }
+
 }
