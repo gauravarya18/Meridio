@@ -21,7 +21,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/topuserpic"
         android:layout_width="71dp"
         android:layout_height="71dp"
         android:layout_marginStart="16dp"
@@ -44,27 +44,18 @@
         android:id="@+id/nameuser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="32dp"
-        android:text="Shubhankar"
-        android:textColor="#FFF"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="48dp"
         android:fontFamily="@font/mr"
+        android:text="Name"
+        android:textStyle="bold"
+
+        android:textColor="#FFF"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/topuserpic"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--<TextView-->
-        <!--android:id="@+id/walletuser"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginStart="17dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:text="USD Wallet"-->
-        <!--android:fontFamily="@font/ml"-->
-        <!--android:textColor="#FFF"-->
-        <!--android:textSize="16sp"-->
-        <!--app:layout_constraintStart_toEndOf="@+id/imageView2"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/nameuser" />-->
+
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -78,7 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+        app:layout_constraintTop_toBottomOf="@+id/topuserpic">
 
         <TextView
             android:id="@+id/mainmenus"

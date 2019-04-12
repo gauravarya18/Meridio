@@ -79,7 +79,7 @@ public class ChooseTask extends AppCompatActivity {
 
 
         imageView3 = findViewById(R.id.imageView3);
-        profilepic = (ImageView) findViewById(R.id.imageView2);
+
 
 
         //Toast.makeText(this, mAuth.getCurrentUser().getDisplayName(), Toast.LENGTH_SHORT).show();
@@ -167,6 +167,36 @@ public class ChooseTask extends AppCompatActivity {
         pagesubtitle.startAnimation(atgtwo);
 
         btnguide.startAnimation(atgthree);
+        final TextView topname=findViewById(R.id.nameuser);
+        final ImageView userimg=findViewById(R.id.topuserpic);
+
+
+        //Adding name in choose Activity
+        FirebaseDatabase.getInstance().getReference("users/" + mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.d("suthar", dataSnapshot.toString());
+                String name = dataSnapshot.child("name").getValue(String.class);
+                String url = dataSnapshot.child("url").getValue(String.class);
+                topname.setText("Hi "+name);
+
+
+                Glide.with(ChooseTask.this)
+                        .load(url)
+                        .apply(RequestOptions.circleCropTransform())
+                        .into(userimg);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+
     }
 
     public void ShowPopup(View v) {

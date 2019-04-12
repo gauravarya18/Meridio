@@ -5,8 +5,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
@@ -26,13 +30,23 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
-
+        final TextView mName=findViewById(R.id.name);
+        final TextView mAge=findViewById(R.id.age);
+        final ImageView img=findViewById(R.id.profile_image);
         FirebaseDatabase.getInstance().getReference("users/" + user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Log.d("suthar", dataSnapshot.toString());
                 String name = dataSnapshot.child("name").getValue(String.class);
-                String number = dataSnapshot.child("number").getValue(String.class);
+                String number = dataSnapshot.child("age").getValue(String.class);
+                String url = dataSnapshot.child("url").getValue(String.class);
+                mAge.setText(number);
+                mName.setText(name);
+
+                Glide.with(ProfileActivity.this)
+                        .load(url)
+                        .apply(RequestOptions.circleCropTransform())
+                        .into(img);
             }
 
             @Override
