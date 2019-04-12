@@ -1,6 +1,7 @@
 package com.example.tinder2;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -19,12 +20,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+
+import java.util.HashMap;
 
 public class RegistrationActivity extends AppCompatActivity {
 
     private Button mRegister;
     private EditText mEmail, mPassword;
-    private EditText mContact,mName;
+    private EditText mAge, mName;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
 
@@ -38,7 +42,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                if (user !=null){
+                if (user != null) {
 //                    Intent intent = new Intent(RegistrationActivity.this, MapsActivity.class);
 //                    startActivity(intent);
                     finish();
@@ -53,42 +57,37 @@ public class RegistrationActivity extends AppCompatActivity {
         mEmail = (EditText) findViewById(R.id.email);
         mPassword = (EditText) findViewById(R.id.password);
 
-        mName= (EditText) findViewById(R.id.name);
-        mContact=(EditText) findViewById(R.id.contact);
+        mName = (EditText) findViewById(R.id.name);
+        mAge = (EditText) findViewById(R.id.age);
 
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
-                final String name=mName.getText().toString();
-                final String contact=mContact.getText().toString();
-                if(email.isEmpty())
-                {
+                final String name = mName.getText().toString();
+                final String age = mAge.getText().toString();
+                if (email.isEmpty()) {
                     mEmail.setError("Email is required");
                     mEmail.requestFocus();
                     return;
                 }
-                if(name.isEmpty())
-                {
+                if (name.isEmpty()) {
                     mEmail.setError("Email is required");
                     mEmail.requestFocus();
                     return;
                 }
-                if(contact.isEmpty())
-                {
+                if (age.isEmpty()) {
                     mEmail.setError("Email is required");
                     mEmail.requestFocus();
                     return;
                 }
-                if(password.isEmpty())
-                {
+                if (password.isEmpty()) {
                     mPassword.setError("Password is required");
                     mPassword.requestFocus();
                     return;
                 }
-                if(password.length()<6)
-                {
+                if (password.length() < 6) {
                     mPassword.setError("Minimum length of password must be 6");
                     mPassword.requestFocus();
                     return;
@@ -96,34 +95,28 @@ public class RegistrationActivity extends AppCompatActivity {
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(!task.isSuccessful()){
-                            if(task.getException() instanceof FirebaseAuthUserCollisionException)
-                            {
+                        if (!task.isSuccessful()) {
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                                 Toast.makeText(RegistrationActivity.this, "You are already registered", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(RegistrationActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
-                            else
-                            {
-                                Toast.makeText(RegistrationActivity.this,task.getException().getMessage() , Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        else
-                        {
+                        } else {
 
-                            String userId=mAuth.getCurrentUser().getUid();
-                            DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("users").child(userId).child("name");
-                            currentUserDb.setValue(name);
-                            DatabaseReference currentUserDb1 = FirebaseDatabase.getInstance().getReference().child("users").child(userId).child("contact");
-                            currentUserDb1.setValue(contact);
+                            String userId = mAuth.getCurrentUser().getUid();
+                            HashMap<String, Object> map = new HashMap<>();
+                            map.put("name", name);
+                            map.put("age", age);
 
-                            UserProfileChangeRequest profile =new UserProfileChangeRequest.Builder()
-                            .setDisplayName(name)
-                                    .build();
+                            FirebaseDatabase.getInstance().getReference("users/" + userId).setValue(map);
+
+//                            UserProfileChangeRequest profile =new UserProfileChangeRequest.Builder()
+//                            .setDisplayName(name)
+//                                    .build();
 
 //                            Intent intent=new Intent(RegistrationActivity.this,MapsActivity.class);
 //                            startActivity(intent);
 //                            finish();
-
-
 
 
                         }
@@ -131,6 +124,10 @@ public class RegistrationActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private void uploadImage(Uri uri){
+        FirebaseStorage.getInstance().getReference().putFile(uri);
     }
 
     @Override

@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -84,6 +85,7 @@ public class GuideActivity extends AppCompatActivity {
                 backButton.setText("");
 
                 backButton.setVisibility(View.INVISIBLE);
+
             }
             if(i==1)
             {

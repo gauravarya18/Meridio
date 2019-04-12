@@ -7,64 +7,92 @@
     android:background="#ffffff"
     tools:context=".ProfileActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="422dp"
-        android:layout_height="313dp"
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="408dp"
+        android:layout_height="262dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/gradient"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bgheader" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/chloe"
+        app:civ_border_color="#FFFFFF"
+        app:civ_border_width="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/back" />
+
+
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="386dp"
+        android:layout_height="80dp"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="300dp"
+        android:background="@drawable/settings_bt"
+
+        android:text="Namenamenamename"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:textAlignment="textStart"
+        android:padding="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageButton
-        android:id="@+id/profilePicture"
-        android:layout_width="301dp"
-        android:layout_height="217dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:alpha="100.00"
-        android:background="@drawable/round_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/chloebennet"
-        tools:layout_editor_absoluteY="0dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="381dp"
-        android:layout_height="89dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="384dp"
-        android:background="#F9F9F9"
-        android:text="American Actress                 and Singer"
-        android:textAlignment="center"
-        android:textColor="#0E9DE7"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="183dp"
-        android:layout_height="45dp"
+        android:id="@+id/age"
+        android:layout_width="380dp"
+        android:layout_height="80dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="500dp"
-        android:text="Chloe Bennet"
-        android:textColor="#ffffff"
-        android:textSize="25dp"
-        android:textStyle="italic"
+        android:layout_marginBottom="196dp"
+        android:background="@drawable/settings_bt"
+
+        android:text="Namenamenamename"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:textAlignment="textStart"
+        android:padding="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.561"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/gender"
+        android:layout_width="380dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="92dp"
+        android:background="@drawable/settings_bt"
+
+        android:text="Namenamenamename"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:textAlignment="textStart"
+        android:padding="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

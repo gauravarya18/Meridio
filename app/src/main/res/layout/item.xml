@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="center"
     android:layout_width="400dp"
-    android:layout_height="500dp">
+    android:layout_height="650dp">
 
     <TextView
         android:id="@+id/helloText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#8484FF"
+        android:background="@drawable/swipecard"
         android:gravity="center"
         android:textColor="#ffffff"
         android:textSize="40sp"
-        tools:text="string/hello_world" />
+        tools:text="string/hello_world"
+        />
 
     <View
         android:id="@+id/item_swipe_left_indicator"

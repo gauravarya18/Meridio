@@ -4,6 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+
+    <!--<pl.droidsonroids.gif.GifTextView-->
+        <!--android:id="@+id/slide_image"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_marginStart="141.5dp"-->
+        <!--android:layout_marginTop="100dp"-->
+        <!--android:layout_marginEnd="141.5dp"-->
+        <!--tools:srcCompat="@tools:sample/avatars[0]"-->
+
+        <!--/>-->
     <ImageView
         android:id="@+id/slide_image"
         android:layout_width="wrap_content"

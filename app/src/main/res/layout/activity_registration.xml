@@ -43,12 +43,12 @@
         android:background="@drawable/round_text1"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/contact"
+        app:layout_constraintBottom_toTopOf="@+id/age"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/contact"
+        android:id="@+id/age"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -58,7 +58,7 @@
         android:textColorHint="#808080"
         android:layout_marginBottom="20dp"
         android:background="@drawable/round_text1"
-        android:hint="Contact"
+        android:hint="Age"
         android:inputType="phone"
         app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +92,7 @@
         android:layout_marginBottom="56dp"
         android:background="@drawable/round_text1"
         android:textColorHint="#808080"
-        android:hint="Confirm password"
+        android:hint="--GENDER--"
         android:padding="2mm"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/register"

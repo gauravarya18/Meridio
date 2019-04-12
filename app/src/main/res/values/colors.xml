@@ -5,4 +5,9 @@
     <color name="colorAccent">#D81B60</color>
     <color name="transparentWhiteColor">#cccccc</color>
     <color name="White">#fff</color>
+    <color name="orange">#FF9800</color>
+    <color name="bluelight">#00BCD4</color>
+    <color name="green">#4CAF50</color>
+    <color name="palewhite">#1E11FF0D</color>
+    <color name="swipecard">#56C4F0</color>
 </resources>
