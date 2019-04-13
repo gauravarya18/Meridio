@@ -1,6 +1,7 @@
 package com.example.tinder2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -42,7 +43,7 @@ public class GuideActivity extends AppCompatActivity {
         mDotLayout=findViewById(R.id.dotsLayout);
 
         nextButton=findViewById(R.id.nextbutton);
-        backButton=findViewById(R.id.backbutton);
+       // backButton=findViewById(R.id.backbutton);
 
         slideradapter=new SliderAdapter(this);
         gifImageView1=findViewById(R.id.gif1);
@@ -84,38 +85,44 @@ public class GuideActivity extends AppCompatActivity {
             mcurrentpg=i;
             if(i==0)
             {
-                nextButton.setEnabled(true);
-                backButton.setEnabled(false);
+                nextButton.setEnabled(false);
+                nextButton.setText("");
                 Heading.setText("Choosing your desired region.");
-                nextButton.setText("Next");
-                backButton.setText("");
+
                 gifImageView1.setVisibility(View.VISIBLE);
                 gifImageView2.setVisibility(View.INVISIBLE);
-                backButton.setVisibility(View.INVISIBLE);
+
 
             }
             if(i==1)
             {
-                nextButton.setEnabled(true);
-                backButton.setEnabled(true);
+
+
                  Heading.setText("Swiping cards.");
-                nextButton.setText("Next");
-                backButton.setText("Back");
+                nextButton.setEnabled(false);
+                nextButton.setText("");
                 gifImageView1.setVisibility(View.INVISIBLE);
                 gifImageView2.setVisibility(View.VISIBLE);
-                backButton.setVisibility(View.VISIBLE);
+
             }
             if(i==2)
             {
                 nextButton.setEnabled(true);
-                backButton.setEnabled(true);
-                Heading.setText("");
 
+                Heading.setText("");
+                nextButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent=new Intent(GuideActivity.this,ChooseTask.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
                 nextButton.setText("Finish");
-                backButton.setText("Back");
+
                 gifImageView1.setVisibility(View.INVISIBLE);
                 gifImageView2.setVisibility(View.INVISIBLE);
-                backButton.setVisibility(View.VISIBLE);
+
             }
         }
     };
@@ -132,4 +139,5 @@ public class GuideActivity extends AppCompatActivity {
             return Html.fromHtml(html);
         }
     }
+
 }
