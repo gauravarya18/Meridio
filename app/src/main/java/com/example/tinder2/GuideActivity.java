@@ -18,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import pl.droidsonroids.gif.GifImageView;
+
 
 public class GuideActivity extends AppCompatActivity {
     private ViewPager mSlideViewPager;
@@ -26,9 +28,11 @@ public class GuideActivity extends AppCompatActivity {
 
     private SliderAdapter slideradapter;
     private TextView[] mDots;
+    TextView Heading;
 
     private Button nextButton,backButton;
     public int mcurrentpg;
+    public GifImageView gifImageView1,gifImageView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,9 @@ public class GuideActivity extends AppCompatActivity {
         backButton=findViewById(R.id.backbutton);
 
         slideradapter=new SliderAdapter(this);
-
+        gifImageView1=findViewById(R.id.gif1);
+        gifImageView2=findViewById(R.id.gif2);
+        Heading=findViewById(R.id.heading);
         mSlideViewPager.setAdapter(slideradapter);
         addDotsIndicator(0);
 
@@ -80,10 +86,11 @@ public class GuideActivity extends AppCompatActivity {
             {
                 nextButton.setEnabled(true);
                 backButton.setEnabled(false);
-
+                Heading.setText("Choosing your desired region.");
                 nextButton.setText("Next");
                 backButton.setText("");
-
+                gifImageView1.setVisibility(View.VISIBLE);
+                gifImageView2.setVisibility(View.INVISIBLE);
                 backButton.setVisibility(View.INVISIBLE);
 
             }
@@ -91,20 +98,23 @@ public class GuideActivity extends AppCompatActivity {
             {
                 nextButton.setEnabled(true);
                 backButton.setEnabled(true);
-
+                 Heading.setText("Swiping cards.");
                 nextButton.setText("Next");
                 backButton.setText("Back");
-
+                gifImageView1.setVisibility(View.INVISIBLE);
+                gifImageView2.setVisibility(View.VISIBLE);
                 backButton.setVisibility(View.VISIBLE);
             }
             if(i==2)
             {
                 nextButton.setEnabled(true);
                 backButton.setEnabled(true);
+                Heading.setText("");
 
                 nextButton.setText("Finish");
                 backButton.setText("Back");
-
+                gifImageView1.setVisibility(View.INVISIBLE);
+                gifImageView2.setVisibility(View.INVISIBLE);
                 backButton.setVisibility(View.VISIBLE);
             }
         }

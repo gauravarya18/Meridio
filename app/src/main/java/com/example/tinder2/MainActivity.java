@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
   //  private ArrayAdapter<String> arrayAdapter;
     private int i,a;
     private MyAdapter arrayAdapter;
-    private TextView tv;
+
     //private int i;
     private ArrayList<String> a1; // = (ArrayList<String>) getIntent().getSerializableExtra("a1");
 
@@ -40,24 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                tv=(TextView) findViewById(R.id.tv1);
-                a1 = new ArrayList<>();
-                int x=(int)getIntent().getSerializableExtra("mapid");
-                a=x;
-                if(x==1)
-                    tv.setText("Latin America");
-                else if(x==2)
-                    tv.setText("North America");
-                else if(x==3)
-                    tv.setText("Australia");
-                else if(x==4)
-                    tv.setText("Asia");
-                else if(x==5)
-                    tv.setText("Africa");
-                else if(x==6)
-                    tv.setText("Arab");
-                else if(x==7)
-                    tv.setText("Europe");
+
 
 
 
@@ -99,15 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onAdapterAboutToEmpty(int itemsInAdapter) {
-                        // Ask for more data here
-                /*int x = 2;
-                if (i % x == 0)
-                    a1.add("<3 ");
-                else
-                    a1.add(":P ");
-                arrayAdapter.notifyDataSetChanged();
-                Log.d("LIST", "notified");
-                i++;*/
+
                     }
 
                     @Override

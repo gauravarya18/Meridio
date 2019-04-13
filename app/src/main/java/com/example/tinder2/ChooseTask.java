@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -36,6 +37,7 @@ import android.app.ProgressDialog;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ChooseTask extends AppCompatActivity {
@@ -45,7 +47,7 @@ public class ChooseTask extends AppCompatActivity {
     String url;
     int x;
     Uri uri;
-    TextView nameuser, walletuser, pagetitle, pagesubtitle;
+    TextView nameuser, walletuser, pagetitle, pagesubtitle,tv;
     ProgressDialog progressDialog;
     FirebaseAuth mAuth;
     Button btnguide;
@@ -82,7 +84,22 @@ public class ChooseTask extends AppCompatActivity {
 
         imageView3 = findViewById(R.id.imageView3);
 
-
+        //Setting region in textview with id tv
+        tv=(TextView) findViewById(R.id.tv);
+        if(x==1)
+            tv.setText("Latin America");
+        else if(x==2)
+            tv.setText("North America");
+        else if(x==3)
+            tv.setText("Australia");
+        else if(x==4)
+            tv.setText("Asia");
+        else if(x==5)
+            tv.setText("Africa");
+        else if(x==6)
+            tv.setText("Arab");
+        else if(x==7)
+            tv.setText("Europe");
 
         //Toast.makeText(this, mAuth.getCurrentUser().getDisplayName(), Toast.LENGTH_SHORT).show();
 
@@ -184,7 +201,7 @@ public class ChooseTask extends AppCompatActivity {
                 Log.d("suthar", dataSnapshot.toString());
                 String name = dataSnapshot.child("name").getValue(String.class);
                 String url = dataSnapshot.child("url").getValue(String.class);
-                topname.setText("Hi, "+name +"!");
+                topname.setText("Hi, "+name.toUpperCase() +"!");
 
 
                 Glide.with(ChooseTask.this)
@@ -301,6 +318,9 @@ public class ChooseTask extends AppCompatActivity {
     }
 
     private void uploadImage(Uri uri) {
+        final ProgressDialog progressDialog = new ProgressDialog(ChooseTask.this);
+        progressDialog.setMessage("Applying Changes" +"\n"+ "Please wait..");
+        progressDialog.show();
 
         final StorageReference ref = FirebaseStorage.getInstance().getReference(mAuth.getUid()).child(uri.getLastPathSegment());
         UploadTask uploadTask = ref.putFile(uri);
@@ -319,20 +339,37 @@ public class ChooseTask extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
                 if (task.isSuccessful()) {
+
+
+
                     Uri downloadUri = task.getResult();
                     Log.d("suthar", downloadUri.toString());
                     Glide.with(ChooseTask.this)
                             .load(downloadUri)
                             .apply(RequestOptions.circleCropTransform())
                             .into(imageView);
+
                     saveImageUrlToDatabase(downloadUri.toString());
+
                 } else {
                     Log.d("suthar", "Error");
                     // Handle failures
                     // ...
                 }
+
+
+//                new Handler().postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        // Magic here
+//                    }
+//                }, 3000);
+
+                progressDialog.dismiss();
+
             }
         });
+
     }
 
     private void saveImageUrlToDatabase(String url) {

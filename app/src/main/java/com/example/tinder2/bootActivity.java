@@ -109,16 +109,13 @@ public class bootActivity extends AppCompatActivity {
 
         mEmail = (EditText) findViewById(R.id.email);
         mPassword = (EditText) findViewById(R.id.password);
-//        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        if(user!=null)
+
 
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                ProgressDialog progressDialog = new ProgressDialog(bootActivity.this);
-                progressDialog.setMessage("Authenticating" +"\n"+ "please wait...");
-                progressDialog.show();
+                gaurav(2);
                 Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.zoom_out);
                 mLogin.startAnimation(animation);
@@ -143,16 +140,20 @@ public class bootActivity extends AppCompatActivity {
                     mPassword.requestFocus();
                     return;
                 }
+
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(bootActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
+
                         if(!task.isSuccessful()){
                             Toast.makeText(bootActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
+                        gaurav(1);
                     }
                 });
 
-                progressDialog.dismiss();;
+
             }
         });
 
@@ -171,7 +172,19 @@ public class bootActivity extends AppCompatActivity {
         });
 
     }
+void gaurav(int i){
+       ProgressDialog progressDialog = new ProgressDialog(bootActivity.this);
+        if(i==1)
+        {
+            progressDialog.dismiss();
+        }
+        else
+        {
 
+            progressDialog.setMessage("Authenticating" +"\n"+ "Please wait..");
+            progressDialog.show();
+        }
+}
     @Override
     protected void onStart() {
         super.onStart();

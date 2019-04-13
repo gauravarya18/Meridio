@@ -32,7 +32,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="196dp"
         android:background="@drawable/settings_bt"
-        android:onClick="chlng"
+
         android:text="Change Region"
         android:textColor="#000"
         android:textSize="20dp"
