@@ -9,11 +9,9 @@
 
 
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="230dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
         android:background="@drawable/bgheader"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -177,7 +175,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginBottom="8dp"
-                    android:src="@drawable/settings_ic"
+                    android:src="@drawable/group_ic"
                     android:background="@drawable/button_dash"
                     android:id="@+id/settings"/>
 
@@ -185,7 +183,7 @@
                     android:id="@+id/settings_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Settings"
+                    android:text="About us"
                     android:fontFamily="@font/mm"
                     android:textColor="#172646"
                     android:textSize="16sp" />
@@ -273,5 +271,34 @@
         app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toEndOf="@+id/topuserpic"
         app:layout_constraintTop_toBottomOf="@+id/nameuser" />
+
+    <ImageView
+        android:id="@+id/editoptn"
+        android:layout_width="29dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tv"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:srcCompat="@drawable/ic_edit_black_24dp" />
+
+    <TextView
+        android:id="@+id/feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="feedback"
+        android:text=" We are Listening !"
+        android:textAlignment="center"
+        android:textColor="#A1A1A1"
+        android:textSize="16sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

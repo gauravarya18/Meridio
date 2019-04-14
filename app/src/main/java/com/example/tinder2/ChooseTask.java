@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -34,6 +35,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import android.app.ProgressDialog;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -44,18 +46,21 @@ public class ChooseTask extends AppCompatActivity {
 
     private static final int CHOOSE_IMAGE = 2818;
     private Button mDashboard, mProfile, mPlay, mSettings;
-    String url;
+    String feed;
+    EditText getfeedback;
+    ImageButton sendit;
     int x;
     Uri uri;
     TextView nameuser, walletuser, pagetitle, pagesubtitle,tv;
     ProgressDialog progressDialog;
     FirebaseAuth mAuth;
     Button btnguide;
-    Animation atg, atgtwo, atgthree;
-    ImageView imageView3, profilepic;
+    Animation atg, atgtwo, atgthree,atgfour;
+    ImageView imageView3, change;
     ImageButton iclist, icapps, icplug, icnet;
-    Dialog myDialog;
+    Dialog myDialog,fdDialog;
     String m="Male";
+    TextView fdtv;
 
     private Button btnChoose, btnUpload;
     private ImageView imageView;
@@ -71,16 +76,26 @@ public class ChooseTask extends AppCompatActivity {
         setContentView(R.layout.activity_choose_task);
 
         myDialog = new Dialog(this);
-
+        fdDialog=new Dialog(this);
+        fdtv=findViewById(R.id.feedback);
 
         final int x = (int) getIntent().getSerializableExtra("mapid");
         atg = AnimationUtils.loadAnimation(this, R.anim.atg);
         atgtwo = AnimationUtils.loadAnimation(this, R.anim.atgtwo);
         atgthree = AnimationUtils.loadAnimation(this, R.anim.atgthree);
+        atgfour=  AnimationUtils.loadAnimation(this, R.anim.atgfour);
         mAuth = FirebaseAuth.getInstance();
         nameuser = findViewById(R.id.nameuser);
+        change=findViewById(R.id.editoptn);
 
 
+
+//        fdtv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                feedback();
+//            }
+//        });
 
         imageView3 = findViewById(R.id.imageView3);
 
@@ -101,7 +116,14 @@ public class ChooseTask extends AppCompatActivity {
         else if(x==7)
             tv.setText("Europe");
 
-        //Toast.makeText(this, mAuth.getCurrentUser().getDisplayName(), Toast.LENGTH_SHORT).show();
+        change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ChooseTask.this,MapsActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         icapps = (ImageButton) findViewById(R.id.settings);
         icapps.setOnClickListener(new View.OnClickListener() {
@@ -110,11 +132,11 @@ public class ChooseTask extends AppCompatActivity {
                 Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.zoom_out);
                 icapps.startAnimation(animation);
-                Intent intent = new Intent(ChooseTask.this, SettingsActivity.class);
-                intent.putExtra("mapid", x);
+                Intent intent = new Intent(ChooseTask.this, AboutMe.class);
+                //intent.putExtra("mapid", x);
                 startActivity(intent);
 
-                finish();
+
 
                 return;
             }
@@ -186,6 +208,7 @@ public class ChooseTask extends AppCompatActivity {
         pagesubtitle.startAnimation(atgtwo);
 
         btnguide.startAnimation(atgthree);
+        fdtv.startAnimation(atgfour);
         final TextView topname=findViewById(R.id.nameuser);
         final ImageView userimg=findViewById(R.id.topuserpic);
 
@@ -201,7 +224,8 @@ public class ChooseTask extends AppCompatActivity {
                 Log.d("suthar", dataSnapshot.toString());
                 String name = dataSnapshot.child("name").getValue(String.class);
                 String url = dataSnapshot.child("url").getValue(String.class);
-                topname.setText("Hi, "+name.toUpperCase() +"!");
+                feed= dataSnapshot.child("feedback").getValue(String.class);
+                topname.setText("Hi, "+name +" !");
 
 
                 Glide.with(ChooseTask.this)
@@ -226,7 +250,7 @@ public class ChooseTask extends AppCompatActivity {
 
     public void ShowPopup(View v) {
         TextView txtclose;
-        Button btnFollow;
+
         myDialog.setContentView(R.layout.custompopup);
         txtclose = myDialog.findViewById(R.id.txtclose);
         txtclose.setText("X");
@@ -265,6 +289,7 @@ public class ChooseTask extends AppCompatActivity {
                 String age = dataSnapshot.child("age").getValue(String.class);
                 String url = dataSnapshot.child("url").getValue(String.class);
                 String gender= dataSnapshot.child("gender").getValue().toString();
+
 
                 mName.setText(name);
                 mAge.setText(age+" yrs");
@@ -387,7 +412,51 @@ public class ChooseTask extends AppCompatActivity {
 
         return;
     }
+    public void feedback(View v)
+    {
+        TextView txtclose;
 
+        fdDialog.setContentView(R.layout.feedback);
+        txtclose = fdDialog.findViewById(R.id.txtclose);
+        txtclose.setText("X");
+
+        txtclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fdDialog.dismiss();
+            }
+        });
+        fdDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        fdDialog.show();
+
+
+        getfeedback=fdDialog.findViewById(R.id.writefeedback);
+
+
+        ImageButton sendit=fdDialog.findViewById(R.id.send);
+        sendit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 String feedback=getfeedback.getText().toString();
+                String userId = mAuth.getCurrentUser().getUid();
+                if(!feedback.equals("")) {
+                    feedback=feed+"/"+feedback;
+                    HashMap<String, Object> map = new HashMap<>();
+                    map.put("feedback", feedback);
+
+                    FirebaseDatabase.getInstance().getReference("users/" + userId).updateChildren(map);
+                    Toast.makeText(ChooseTask.this, "Thanks for your valuable suggestion.", Toast.LENGTH_SHORT).show();
+                    getfeedback.setText("");
+                    fdDialog.dismiss();
+                }
+                else
+                {
+                    Toast.makeText(ChooseTask.this, "Please Enter Your Valuable Inputs", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
 
 }
 

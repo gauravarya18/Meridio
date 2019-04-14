@@ -74,6 +74,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 final String name = mName.getText().toString();
                 final String age = mAge.getText().toString();
                 final String gender=String.valueOf(mGender);
+                final String feed="";
                 if (email.isEmpty()) {
                     mEmail.setError("Email is required");
                     mEmail.requestFocus();
@@ -116,6 +117,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             map.put("name", name);
                             map.put("age", age);
                             map.put("gender",mGender);
+                            map.put("feedback",feed);
 
 
                             FirebaseDatabase.getInstance().getReference("users/" + userId).setValue(map);

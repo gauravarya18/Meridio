@@ -33,7 +33,7 @@ public class GuideActivity extends AppCompatActivity {
 
     private Button nextButton,backButton;
     public int mcurrentpg;
-    public GifImageView gifImageView1,gifImageView2;
+    public GifImageView gifImageView1,gifImageView2,gifImageView3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,7 @@ public class GuideActivity extends AppCompatActivity {
         slideradapter=new SliderAdapter(this);
         gifImageView1=findViewById(R.id.gif1);
         gifImageView2=findViewById(R.id.gif2);
+        gifImageView3=findViewById(R.id.gif3);
         Heading=findViewById(R.id.heading);
         mSlideViewPager.setAdapter(slideradapter);
         addDotsIndicator(0);
@@ -91,6 +92,7 @@ public class GuideActivity extends AppCompatActivity {
 
                 gifImageView1.setVisibility(View.VISIBLE);
                 gifImageView2.setVisibility(View.INVISIBLE);
+                gifImageView3.setVisibility(View.INVISIBLE);
 
 
             }
@@ -103,13 +105,13 @@ public class GuideActivity extends AppCompatActivity {
                 nextButton.setText("");
                 gifImageView1.setVisibility(View.INVISIBLE);
                 gifImageView2.setVisibility(View.VISIBLE);
-
+                gifImageView3.setVisibility(View.INVISIBLE);
             }
             if(i==2)
             {
                 nextButton.setEnabled(true);
 
-                Heading.setText("");
+                Heading.setText("We value your suggestion.");
                 nextButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -122,6 +124,7 @@ public class GuideActivity extends AppCompatActivity {
 
                 gifImageView1.setVisibility(View.INVISIBLE);
                 gifImageView2.setVisibility(View.INVISIBLE);
+                gifImageView3.setVisibility(View.VISIBLE);
 
             }
         }

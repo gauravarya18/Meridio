@@ -13,9 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".AboutMe"></activity>
         <activity android:name=".MapsActivity" />
         <activity android:name=".NewsActivity" />
-        <activity android:name=".SettingsActivity" />
         <activity android:name=".DashboardActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".bootActivity">
@@ -26,8 +26,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChooseTask"
-            android:launchMode = "singleInstance"/>
+        <activity
+            android:name=".ChooseTask"
+            android:launchMode="singleInstance" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".GuideActivity" />
