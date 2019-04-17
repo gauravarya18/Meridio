@@ -24,6 +24,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -40,6 +41,9 @@ public class NewsActivity extends AppCompatActivity {
     private ArrayList<String> Urls;
     private  ArrayList<String> Contents;
     int i=0,x,levelid;
+    int share[];
+
+
 
 
     @Override
@@ -47,6 +51,8 @@ public class NewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
         int a=(int)getIntent().getSerializableExtra("mapid");
+        int share_1[]=(int[])getIntent().getSerializableExtra("share");
+        share=share_1;
         x=a;
         int l=levelid=(int)getIntent().getSerializableExtra("level");
         levelid=l;
@@ -311,6 +317,7 @@ public class NewsActivity extends AppCompatActivity {
                         intent.putExtra("Contents",Contents);
                         intent.putExtra("Urls",Urls);
                         intent.putExtra("mapid",x);
+                        intent.putExtra("share",share);
                         startActivity(intent);
                         finish();
                     }
@@ -322,6 +329,7 @@ public class NewsActivity extends AppCompatActivity {
                         intent.putExtra("Contents",Contents);
                         intent.putExtra("Urls",Urls);
                         intent.putExtra("mapid",x);
+                        intent.putExtra("share",share);
                         startActivity(intent);
                         finish();
                     }

@@ -27,8 +27,10 @@ public class MainActivity extends AppCompatActivity {
     // = (ArrayList<String>) getIntent().getSerializableExtra("a1");
 
     private FirebaseAuth mAuth;
-
+    int share[];
     TextView level;
+    int shared_level2=0;
+    int score=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
+        int share_1[]=(int[])getIntent().getSerializableExtra("share");
+        share=share_1;
 
 //         level=(TextView)findViewById(R.id.level);
 //        level.animate().translationY(-2300).setDuration(2000).setStartDelay(500);
@@ -79,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
                 //You also have access to the original object.
                 //If you want to use it just cast it (String) dataObject
                 Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
+                if(share[count]==0)
+                    score++;
                 if(count==6) {
 
                     Intent intent = new Intent(MainActivity.this, ChooseTask.class);
@@ -93,10 +99,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onRightCardExit(Object dataObject) {
                 Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
+                if(share[count]==1)
+                    score++;
+                shared_level2++;
                 if(count==6) {
-                    Intent intent=new Intent(MainActivity.this,ChooseTask.class);
+                    Intent intent=new Intent(MainActivity.this,DashboardActivity.class);
                 intent.putExtra("mapid",a);
-
+                intent.putExtra("share",share);
+                intent.putExtra("score",score);
+                intent.putExtra("shared_level2",shared_level2);
                 startActivity(intent);
                 finish(); }
                 count++;

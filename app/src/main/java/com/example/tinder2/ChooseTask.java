@@ -61,6 +61,7 @@ public class ChooseTask extends AppCompatActivity {
     Dialog myDialog,fdDialog;
     String m="Male";
     TextView fdtv;
+    int share[];
 
     private Button btnChoose, btnUpload;
     private ImageView imageView;
@@ -177,6 +178,7 @@ public class ChooseTask extends AppCompatActivity {
                 Intent intent = new Intent(ChooseTask.this, NewsActivity.class);
                 intent.putExtra("mapid", x);
                 intent.putExtra("level",1);
+                intent.putExtra("share",share);
                 startActivity(intent);
                 finish();
 
