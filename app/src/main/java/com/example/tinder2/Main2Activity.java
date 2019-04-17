@@ -51,6 +51,7 @@ public class Main2Activity extends AppCompatActivity {
         ArrayList<String> Titles = (ArrayList<String>) getIntent().getSerializableExtra("Titles");
 
 
+
         Log.d("suthar", Titles.toString());
         //final ArrayList<String> a1 =  (ArrayList<String>)getIntent().getSerializableExtra("FILES_TO_SEND");
 
@@ -80,7 +81,7 @@ public class Main2Activity extends AppCompatActivity {
                 //If you want to use it just cast it (String) dataObject
                 Toast.makeText(Main2Activity.this, "left", Toast.LENGTH_SHORT).show();
 
-                if(count==6)
+                if(count==7)
                 {
                     Intent intent=new Intent(Main2Activity.this,ChooseTask.class);
                     intent.putExtra("mapid",a);
@@ -95,7 +96,7 @@ public class Main2Activity extends AppCompatActivity {
             public void onRightCardExit(Object dataObject) {
                 Toast.makeText(Main2Activity.this, "right", Toast.LENGTH_SHORT).show();
 
-                if(count==6)
+                if(count==7)
                 {
                     Intent intent=new Intent(Main2Activity.this,NewsActivity.class);
                     intent.putExtra("mapid",a);
