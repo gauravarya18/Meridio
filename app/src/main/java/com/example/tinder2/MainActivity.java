@@ -18,12 +18,13 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private ArrayList<String> al;
-  //  private ArrayAdapter<String> arrayAdapter;
+    //  private ArrayAdapter<String> arrayAdapter;
     private int i,a;
     private MyAdapter arrayAdapter;
 
     //private int i;
-    private ArrayList<String> a1; // = (ArrayList<String>) getIntent().getSerializableExtra("a1");
+    private ArrayList<String> a1;
+    // = (ArrayList<String>) getIntent().getSerializableExtra("a1");
 
     private FirebaseAuth mAuth;
 
@@ -45,61 +46,64 @@ public class MainActivity extends AppCompatActivity {
 
 
         ArrayList<String> list1 = (ArrayList<String>) getIntent().getSerializableExtra("a1");
-                Log.d("suthar", list1.toString());
-                //final ArrayList<String> a1 =  (ArrayList<String>)getIntent().getSerializableExtra("FILES_TO_SEND");
+        ArrayList<String> Titles = (ArrayList<String>) getIntent().getSerializableExtra("Titles");
+        ArrayList<String> Urls = (ArrayList<String>) getIntent().getSerializableExtra("Urls");
 
-                final ArrayList<NEWS> list = new ArrayList<>();
+        Log.d("suthar", Titles.toString());
+        //final ArrayList<String> a1 =  (ArrayList<String>)getIntent().getSerializableExtra("FILES_TO_SEND");
 
-                for (int i = 0; i < list1.size(); i++) {
-                    list.add(new NEWS(list1.get(i), ""));
-                }
+        final ArrayList<NEWS> list = new ArrayList<>();
 
-                arrayAdapter = new MyAdapter(this, list);
+        for (int i = 0; i < list1.size(); i++) {
+            list.add(new NEWS(Titles.get(i),Urls.get(i)));
+        }
 
-                SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
-                flingContainer.setAdapter(arrayAdapter);
-                flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
-                    @Override
-                    public void removeFirstObjectInAdapter() {
-                        // this is the simplest way to delete an object from the Adapter (/AdapterView)
-                        Log.d("LIST", "removed object!");
-                        list.remove(0);
-                        arrayAdapter.notifyDataSetChanged();
-                    }
+        arrayAdapter = new MyAdapter(this, list);
 
-                    @Override
-                    public void onLeftCardExit(Object dataObject) {
-                        //Do something on the left!
-                        //You also have access to the original object.
-                        //If you want to use it just cast it (String) dataObject
-                        Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
-                    }
+        SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
+        flingContainer.setAdapter(arrayAdapter);
+        flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
+            @Override
+            public void removeFirstObjectInAdapter() {
+                // this is the simplest way to delete an object from the Adapter (/AdapterView)
+                Log.d("LIST", "removed object!");
+                list.remove(0);
+                arrayAdapter.notifyDataSetChanged();
+            }
 
-                    @Override
-                    public void onRightCardExit(Object dataObject) {
-                        Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
-                    }
+            @Override
+            public void onLeftCardExit(Object dataObject) {
+                //Do something on the left!
+                //You also have access to the original object.
+                //If you want to use it just cast it (String) dataObject
+                Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
+            }
 
-                    @Override
-                    public void onAdapterAboutToEmpty(int itemsInAdapter) {
+            @Override
+            public void onRightCardExit(Object dataObject) {
+                Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
+            }
 
-                    }
-
-                    @Override
-                    public void onScroll(float scrollProgressPercent) {
-                    }
-                });
-
-
-                // Optionally add an OnItemClickListener
-                flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClicked(int itemPosition, Object dataObject) {
-                        Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
-                    }
-                });
+            @Override
+            public void onAdapterAboutToEmpty(int itemsInAdapter) {
 
             }
+
+            @Override
+            public void onScroll(float scrollProgressPercent) {
+            }
+        });
+
+
+        // Optionally add an OnItemClickListener
+        flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClicked(int itemPosition, Object dataObject) {
+                Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
 
 
 
@@ -114,4 +118,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    }
+}

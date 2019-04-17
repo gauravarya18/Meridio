@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -28,6 +34,9 @@ public class NewsActivity extends AppCompatActivity {
     ArrayList<String> titles;
     ArrayList<String> links;
     ArrayList<String> a1;
+    public ArrayList<String> Titles;
+    String tv;
+    private ArrayList<String> Urls;
     int i=0,x;
 
 
@@ -244,11 +253,62 @@ public class NewsActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Exception s) {
             super.onPostExecute(s);
-            Intent intent = new Intent(NewsActivity.this, MainActivity.class);
-            intent.putExtra("a1", a1);
-            intent.putExtra("mapid",x);
-            startActivity(intent);
-            finish();
+
+
+
+
+            if (x == 1) tv = "Latin America";
+            else if (x == 2) tv = "North America";
+            else if (x == 3) tv = "Australia";
+            else if (x == 4) tv = "Asia";
+            else if (x == 5) tv = "Africa";
+            else if (x == 6) tv = "Arab";
+            else if (x == 7) tv = "Europe";
+
+
+            FirebaseDatabase.getInstance().getReference("News/" + tv).addValueEventListener(new ValueEventListener() {
+
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    Titles = new ArrayList<>();
+                    Urls = new ArrayList<>();
+                    Log.d("shubh", dataSnapshot.toString());
+
+                    Titles.add(dataSnapshot.child("sports1").getValue(String.class));
+                    Titles.add(dataSnapshot.child("sports2").getValue(String.class));
+                    Titles.add(dataSnapshot.child("lifestyle1").getValue(String.class));
+                    Titles.add(dataSnapshot.child("lifestyle2").getValue(String.class));
+                    Titles.add(dataSnapshot.child("politics1").getValue(String.class));
+                    Titles.add(dataSnapshot.child("politics2").getValue(String.class));
+                    Urls.add(dataSnapshot.child("sports1_url").getValue(String.class));
+                    Urls.add(dataSnapshot.child("sports2_url").getValue(String.class));
+                    Urls.add(dataSnapshot.child("lifestyle1_url").getValue(String.class));
+                    Urls.add(dataSnapshot.child("lifestyle2_url").getValue(String.class));
+                    Urls.add(dataSnapshot.child("politics1_url").getValue(String.class));
+                    Urls.add(dataSnapshot.child("politics2_url").getValue(String.class));
+                    Log.d("suthar",Titles.toString());
+
+                    Intent intent = new Intent(NewsActivity.this, MainActivity.class);
+                    intent.putExtra("a1", a1);
+                    intent.putExtra("Titles",Titles);
+                    intent.putExtra("Urls",Urls);
+                    intent.putExtra("mapid",x);
+                     startActivity(intent);
+                      finish();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Log.d("suthar", databaseError.toString());
+                }
+            });
+
+
+
+
+
 //            ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, titles);
 //
 //            lvRss.setAdapter(adapter);

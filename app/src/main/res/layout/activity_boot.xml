@@ -34,14 +34,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wissen"
+            android:text="Meridio"
             android:textColor="#FFF"
             android:textSize="24sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="A Multilingual App"
+            android:text="A Social Survey App"
             android:textColor="#FFF"
             android:textSize="16sp" />
 
@@ -149,7 +149,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Simply makes design good"
+            android:text="Simply makes you better !"
             android:textColor="#FFF"
             android:textSize="16sp" />
 
