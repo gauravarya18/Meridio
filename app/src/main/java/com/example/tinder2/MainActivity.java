@@ -11,9 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -107,12 +109,17 @@ public class MainActivity extends AppCompatActivity {
                             shared_level1++;
 
                     }
+                    HashMap<String, Object> map = new HashMap<>();
+                    map.put("Level1",shared_level1);
+                    map.put("Score",score);
+                    map.put("Level2",shared_level2);
 
+                    FirebaseDatabase.getInstance().getReference("users/" + mAuth.getCurrentUser().getUid()).updateChildren(map);
                     Intent intent=new Intent(MainActivity.this,DashboardActivity.class);
                     intent.putExtra("mapid",a);
-                    intent.putExtra("share",shared_level1);
-                    intent.putExtra("score",score);
-                    intent.putExtra("shared_level2",shared_level2);
+//                    intent.putExtra("share",shared_level1);
+//                    intent.putExtra("score",score);
+//                    intent.putExtra("shared_level2",shared_level2);
                     startActivity(intent);
                     finish(); }
                 if(share[count+1]==1)
