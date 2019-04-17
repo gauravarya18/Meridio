@@ -62,6 +62,7 @@ public class ChooseTask extends AppCompatActivity {
     String m="Male";
     TextView fdtv;
     int share[];
+    String score0,shared_level10,shared_level20;
 
     private Button btnChoose, btnUpload;
     private ImageView imageView;
@@ -150,6 +151,10 @@ public class ChooseTask extends AppCompatActivity {
                         R.anim.zoom_out);
                 icnet.startAnimation(animation);
                 Intent intent = new Intent(ChooseTask.this, DashboardActivity.class);
+                intent.putExtra("mapid",x);
+                intent.putExtra("share",0);
+                intent.putExtra("score",0);
+                intent.putExtra("shared_level2",0);
                 startActivity(intent);
 
                 return;
@@ -214,6 +219,11 @@ public class ChooseTask extends AppCompatActivity {
         fdtv.startAnimation(atgfour);
         final TextView topname=findViewById(R.id.nameuser);
         final ImageView userimg=findViewById(R.id.topuserpic);
+
+
+
+        //fetching score from database
+
 
 
         //Adding name in choose Activity

@@ -118,6 +118,9 @@ public class RegistrationActivity extends AppCompatActivity {
                             map.put("age", age);
                             map.put("gender",mGender);
                             map.put("feedback",feed);
+                            map.put("Score",0);
+                            map.put("Level1",0);
+                            map.put("Level2",0);
 
 
                             FirebaseDatabase.getInstance().getReference("users/" + userId).setValue(map);

@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     int share[]=new int[8];
     TextView level;
     int shared_level2=0;
+    int shared_level1=0;
     int score=0;
 
     @Override
@@ -100,9 +101,16 @@ public class MainActivity extends AppCompatActivity {
             public void onRightCardExit(Object dataObject) {
                 Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
                 if(count==6) {
+                    for(int i=0;i<share.length;i++)
+                    {
+                        if(share[i]==1)
+                            shared_level1++;
+
+                    }
+
                     Intent intent=new Intent(MainActivity.this,DashboardActivity.class);
                     intent.putExtra("mapid",a);
-                    intent.putExtra("share",share);
+                    intent.putExtra("share",shared_level1);
                     intent.putExtra("score",score);
                     intent.putExtra("shared_level2",shared_level2);
                     startActivity(intent);
