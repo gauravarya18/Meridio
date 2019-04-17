@@ -37,7 +37,8 @@ public class NewsActivity extends AppCompatActivity {
     public ArrayList<String> Titles;
     String tv;
     private ArrayList<String> Urls;
-    int i=0,x;
+    private  ArrayList<String> Contents;
+    int i=0,x,levelid;
 
 
     @Override
@@ -46,6 +47,8 @@ public class NewsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_news);
         int a=(int)getIntent().getSerializableExtra("mapid");
         x=a;
+        int l=levelid=(int)getIntent().getSerializableExtra("level");
+        levelid=l;
         lvRss = (ListView) findViewById(R.id.lvRss);
 
         titles = new ArrayList<String>();
@@ -273,6 +276,7 @@ public class NewsActivity extends AppCompatActivity {
 
                     Titles = new ArrayList<>();
                     Urls = new ArrayList<>();
+                    Contents =new ArrayList<>();
                     Log.d("shubh", dataSnapshot.toString());
 
                     Titles.add(dataSnapshot.child("sports1").getValue(String.class));
@@ -281,21 +285,45 @@ public class NewsActivity extends AppCompatActivity {
                     Titles.add(dataSnapshot.child("lifestyle2").getValue(String.class));
                     Titles.add(dataSnapshot.child("politics1").getValue(String.class));
                     Titles.add(dataSnapshot.child("politics2").getValue(String.class));
+
+                    Contents.add(dataSnapshot.child("sports1_con").getValue(String.class));
+                    Contents.add(dataSnapshot.child("sports2_con").getValue(String.class));
+                    Contents.add(dataSnapshot.child("lifestyle1_con").getValue(String.class));
+                    Contents.add(dataSnapshot.child("lifestyle2_con").getValue(String.class));
+                    Contents.add(dataSnapshot.child("politics1_con").getValue(String.class));
+                    Contents.add(dataSnapshot.child("politics2_con").getValue(String.class));
+
                     Urls.add(dataSnapshot.child("sports1_url").getValue(String.class));
                     Urls.add(dataSnapshot.child("sports2_url").getValue(String.class));
                     Urls.add(dataSnapshot.child("lifestyle1_url").getValue(String.class));
                     Urls.add(dataSnapshot.child("lifestyle2_url").getValue(String.class));
                     Urls.add(dataSnapshot.child("politics1_url").getValue(String.class));
                     Urls.add(dataSnapshot.child("politics2_url").getValue(String.class));
-                    Log.d("suthar",Titles.toString());
 
-                    Intent intent = new Intent(NewsActivity.this, MainActivity.class);
-                    intent.putExtra("a1", a1);
-                    intent.putExtra("Titles",Titles);
-                    intent.putExtra("Urls",Urls);
-                    intent.putExtra("mapid",x);
-                     startActivity(intent);
-                      finish();
+                    Log.d("suthar",Titles.toString());
+                    if(levelid==1)
+                    {Intent intent = new Intent(NewsActivity.this, Main2Activity.class);
+                        intent.putExtra("a1", a1);
+                        intent.putExtra("Titles",Titles);
+                        intent.putExtra("Contents",Contents);
+                        intent.putExtra("Urls",Urls);
+                        intent.putExtra("mapid",x);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else if(levelid==2)
+                    {
+                        Intent intent = new Intent(NewsActivity.this, MainActivity.class);
+                        intent.putExtra("a1", a1);
+                        intent.putExtra("Titles",Titles);
+                        intent.putExtra("Contents",Contents);
+                        intent.putExtra("Urls",Urls);
+                        intent.putExtra("mapid",x);
+                        startActivity(intent);
+                        finish();
+                    }
+
+
 
                 }
 

@@ -176,6 +176,7 @@ public class ChooseTask extends AppCompatActivity {
                 iclist.startAnimation(animation);
                 Intent intent = new Intent(ChooseTask.this, NewsActivity.class);
                 intent.putExtra("mapid", x);
+                intent.putExtra("level",1);
                 startActivity(intent);
                 finish();
 

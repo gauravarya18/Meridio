@@ -15,41 +15,41 @@ import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity {
 
     private ArrayList<String> al;
     //  private ArrayAdapter<String> arrayAdapter;
-    private int i,a,count=0;
-    private MyAdapter arrayAdapter;
+    private int i,a;
+    private MyAdapter1 arrayAdapter;
 
     //private int i;
     private ArrayList<String> a1;
     // = (ArrayList<String>) getIntent().getSerializableExtra("a1");
 
     private FirebaseAuth mAuth;
-
+    int count=0;
     TextView level;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
         mAuth = FirebaseAuth.getInstance();
 
-//         level=(TextView)findViewById(R.id.level);
+
+
+
+//        level=(TextView)findViewById(R.id.level);
 //        level.animate().translationY(-2300).setDuration(2000).setStartDelay(500);
 
 
-
-
-
-
-           int x=(int)getIntent().getSerializableExtra("mapid");
+        int x=(int)getIntent().getSerializableExtra("mapid");
         a=x;
-        ArrayList<String> list1 = (ArrayList<String>) getIntent().getSerializableExtra("a1");
+
+        ArrayList<String> Contents = (ArrayList<String>) getIntent().getSerializableExtra("Contents");
         ArrayList<String> Titles = (ArrayList<String>) getIntent().getSerializableExtra("Titles");
-        ArrayList<String> Urls = (ArrayList<String>) getIntent().getSerializableExtra("Urls");
+
 
         Log.d("suthar", Titles.toString());
         //final ArrayList<String> a1 =  (ArrayList<String>)getIntent().getSerializableExtra("FILES_TO_SEND");
@@ -57,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
         final ArrayList<NEWS> list = new ArrayList<>();
 
         for (int i = 0; i < Titles.size(); i++) {
-            list.add(new NEWS(Titles.get(i),Urls.get(i)));
+            list.add(new NEWS(Titles.get(i),Contents.get(i)));
         }
 
-        arrayAdapter = new MyAdapter(this, list);
+        arrayAdapter = new MyAdapter1(this, list);
 
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
         flingContainer.setAdapter(arrayAdapter);
@@ -78,43 +78,40 @@ public class MainActivity extends AppCompatActivity {
                 //Do something on the left!
                 //You also have access to the original object.
                 //If you want to use it just cast it (String) dataObject
-                Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
-                if(count==6) {
+                Toast.makeText(Main2Activity.this, "left", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(MainActivity.this, ChooseTask.class);
-                    intent.putExtra("mapid", a);
+                if(count==6)
+                {
+                    Intent intent=new Intent(Main2Activity.this,ChooseTask.class);
+                    intent.putExtra("mapid",a);
 
                     startActivity(intent);
                     finish();
                 }
-                 count++;
+                count++;
             }
 
             @Override
             public void onRightCardExit(Object dataObject) {
-                Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
-                if(count==6) {
-                    Intent intent=new Intent(MainActivity.this,ChooseTask.class);
-                intent.putExtra("mapid",a);
+                Toast.makeText(Main2Activity.this, "right", Toast.LENGTH_SHORT).show();
 
-                startActivity(intent);
-                finish(); }
+                if(count==6)
+                {
+                    Intent intent=new Intent(Main2Activity.this,NewsActivity.class);
+                    intent.putExtra("mapid",a);
+                    intent.putExtra("level",2);
+                    startActivity(intent);
+                    finish();
+                }
                 count++;
-
             }
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
-
-
-                list.add(new NEWS("Well Done !!",""));
+                list.add(new NEWS("Level 2",""));
                 arrayAdapter.notifyDataSetChanged();
                 Log.d("LIST", "notified");
 
-//                Intent intent=new Intent(MainActivity.this,NewsActivity.class);
-//                intent.putExtra("mapid",a);
-//                intent.putExtra("level",2);
-//                startActivity(intent);
 
             }
 
@@ -128,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
-                Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Main2Activity.this, "clicked", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -142,12 +139,9 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         finish();
-        Intent intent = new Intent(MainActivity.this, ChooseTask.class);
+        Intent intent = new Intent(Main2Activity.this, ChooseTask.class);
         intent.putExtra("mapid",a);
         startActivity(intent);
     }
-    public void level2()
-    {
 
-    }
 }
