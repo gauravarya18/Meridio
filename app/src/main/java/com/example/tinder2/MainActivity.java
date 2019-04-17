@@ -145,8 +145,5 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("mapid",a);
         startActivity(intent);
     }
-    public void level2()
-    {
 
-    }
 }

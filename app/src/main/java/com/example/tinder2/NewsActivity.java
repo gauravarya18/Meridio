@@ -348,4 +348,12 @@ public class NewsActivity extends AppCompatActivity {
             progressDialog.dismiss();
         }
     }
+    @Override
+    public void onBackPressed() {
+
+        finish();
+        Intent intent = new Intent(NewsActivity.this, ChooseTask.class);
+        intent.putExtra("mapid",x);
+        startActivity(intent);
+    }
 }
