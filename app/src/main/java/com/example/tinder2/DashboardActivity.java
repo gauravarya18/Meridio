@@ -19,18 +19,21 @@ public class DashboardActivity extends AppCompatActivity {
         int shared_level2=(int)getIntent().getSerializableExtra("shared_level2");
         int x=(int)getIntent().getSerializableExtra("mapid");
         a=x;
-        int shared_level1=0;
+        int shared_level1=-2;
         for(int i=0;i<share_1.length;i++)
         {
             if(share_1[i]==1)
                 shared_level1++;
 
         }
+        if(shared_level2==-2||shared_level2==-1)
+            shared_level2=0;
+
        textView3=findViewById(R.id.textView3);
         textView4=findViewById(R.id.textView4);
         textView5=findViewById(R.id.textView5);
-      textView3.setText(shared_level1);
-      textView4.setText(shared_level2);
+      textView3.setText(""+shared_level1);
+      textView4.setText(""+shared_level2);
       textView5.setText("Your Final Score is "+score);
     }
     @Override

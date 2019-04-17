@@ -28,7 +28,7 @@ public class Main2Activity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     int count=0;
-    int share[];
+    int share[]=new int[8];
 
     TextView level;
 

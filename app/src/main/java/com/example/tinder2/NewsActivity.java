@@ -41,8 +41,7 @@ public class NewsActivity extends AppCompatActivity {
     private ArrayList<String> Urls;
     private  ArrayList<String> Contents;
     int i=0,x,levelid;
-    int share[];
-
+    int share[]=new int[8];
 
 
 

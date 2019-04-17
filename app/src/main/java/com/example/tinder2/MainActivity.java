@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     // = (ArrayList<String>) getIntent().getSerializableExtra("a1");
 
     private FirebaseAuth mAuth;
-    int share[];
+    int share[]=new int[8];
     TextView level;
     int shared_level2=0;
     int score=0;
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 //You also have access to the original object.
                 //If you want to use it just cast it (String) dataObject
                 Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
-                if(share[count]==0)
+                if(share[count+1]==0)
                     score++;
                 if(count==6) {
 
@@ -99,17 +99,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onRightCardExit(Object dataObject) {
                 Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
-                if(share[count]==1)
-                    score++;
-                shared_level2++;
                 if(count==6) {
                     Intent intent=new Intent(MainActivity.this,DashboardActivity.class);
-                intent.putExtra("mapid",a);
-                intent.putExtra("share",share);
-                intent.putExtra("score",score);
-                intent.putExtra("shared_level2",shared_level2);
-                startActivity(intent);
-                finish(); }
+                    intent.putExtra("mapid",a);
+                    intent.putExtra("share",share);
+                    intent.putExtra("score",score);
+                    intent.putExtra("shared_level2",shared_level2);
+                    startActivity(intent);
+                    finish(); }
+                if(share[count+1]==1)
+                    score++;
+                shared_level2++;
+
                 count++;
 
             }
@@ -117,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
 
-                list.add(new NEWS("Well Done !!","https://firebasestorage.googleapis.com/v0/b/tinder-2-bb59a.appspot.com/o/kisspng-trophy-clip-art-golden-trophy-5a713ae9136d04.1704861815173700890796.png?alt=media&token=d18bc99b-aa1d-4851-a3da-4770f5e1db6d"));
+                list.add(new NEWS("Well Done !! \n (Swipe Right to See your Score.)","https://firebasestorage.googleapis.com/v0/b/tinder-2-bb59a.appspot.com/o/kisspng-trophy-clip-art-golden-trophy-5a713ae9136d04.1704861815173700890796.png?alt=media&token=d18bc99b-aa1d-4851-a3da-4770f5e1db6d"));
                 arrayAdapter.notifyDataSetChanged();
                 Log.d("LIST", "notified");
 
