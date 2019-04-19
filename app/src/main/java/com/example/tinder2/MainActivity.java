@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 //You also have access to the original object.
                 //If you want to use it just cast it (String) dataObject
                 Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
-                if(share[count+1]==0)
+                if(share[count+2]==0)
                     score++;
                 if(count==6) {
 
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
 //                    intent.putExtra("shared_level2",shared_level2);
                     startActivity(intent);
                     finish(); }
-                if(share[count+1]==1)
+                if(share[count+2]==1)
                     score++;
                 shared_level2++;
 
