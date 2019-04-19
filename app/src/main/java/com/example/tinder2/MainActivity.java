@@ -20,14 +20,9 @@ import java.util.HashMap;
 public class MainActivity extends AppCompatActivity {
 
     private ArrayList<String> al;
-    //  private ArrayAdapter<String> arrayAdapter;
     private int i,a,count=0;
     private MyAdapter arrayAdapter;
-
-    //private int i;
     private ArrayList<String> a1;
-    // = (ArrayList<String>) getIntent().getSerializableExtra("a1");
-
     private FirebaseAuth mAuth;
     int share[]=new int[9];
     TextView level;
@@ -44,13 +39,6 @@ public class MainActivity extends AppCompatActivity {
         int share_1[]=(int[])getIntent().getSerializableExtra("share");
         share=share_1;
 
-//         level=(TextView)findViewById(R.id.level);
-//        level.animate().translationY(-2300).setDuration(2000).setStartDelay(500);
-
-
-
-
-
 
            int x=(int)getIntent().getSerializableExtra("mapid");
         a=x;
@@ -59,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> Urls = (ArrayList<String>) getIntent().getSerializableExtra("Urls");
 
         Log.d("suthar", Titles.toString());
-        //final ArrayList<String> a1 =  (ArrayList<String>)getIntent().getSerializableExtra("FILES_TO_SEND");
+
 
         final ArrayList<NEWS> list = new ArrayList<>();
 
@@ -117,9 +105,6 @@ public class MainActivity extends AppCompatActivity {
                     FirebaseDatabase.getInstance().getReference("users/" + mAuth.getCurrentUser().getUid()).updateChildren(map);
                     Intent intent=new Intent(MainActivity.this,DashboardActivity.class);
                     intent.putExtra("mapid",a);
-//                    intent.putExtra("share",shared_level1);
-//                    intent.putExtra("score",score);
-//                    intent.putExtra("shared_level2",shared_level2);
                     startActivity(intent);
                     finish(); }
                 if(share[count+2]==1)
@@ -136,11 +121,6 @@ public class MainActivity extends AppCompatActivity {
                 list.add(new NEWS("Well Done !! \n (Swipe Right to See your Score.)","https://firebasestorage.googleapis.com/v0/b/tinder-2-bb59a.appspot.com/o/kisspng-trophy-clip-art-golden-trophy-5a713ae9136d04.1704861815173700890796.png?alt=media&token=d18bc99b-aa1d-4851-a3da-4770f5e1db6d"));
                 arrayAdapter.notifyDataSetChanged();
                 Log.d("LIST", "notified");
-
-//                Intent intent=new Intent(MainActivity.this,NewsActivity.class);
-//                intent.putExtra("mapid",a);
-//                intent.putExtra("level",2);
-//                startActivity(intent);
 
             }
 

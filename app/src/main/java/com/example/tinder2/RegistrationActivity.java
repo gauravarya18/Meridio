@@ -176,7 +176,7 @@ public class RegistrationActivity extends AppCompatActivity {
         else
         {
 
-            progressDialog.setMessage("Authenticating" +"\n"+ "Please wait..");
+            progressDialog.setMessage("Registering" +"\n"+ "Please wait..");
             progressDialog.show();
         }
     }

@@ -6,22 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".NewsActivity">
 
-    <!--<TextView-->
-        <!--android:id="@+id/level"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:text="Level 1 \n Be Ready !!"-->
-        <!--android:background="@color/swipecard"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/frame"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent" />-->
-
-    <com.lorentzos.flingswipe.SwipeFlingAdapterView
+       <com.lorentzos.flingswipe.SwipeFlingAdapterView
         android:id="@+id/frame"
         android:background="#ffeee9e2"
         android:layout_width="match_parent"

@@ -1,5 +1,6 @@
 package com.example.tinder2;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -45,22 +46,22 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-//        int shared_level1=(int)getIntent().getSerializableExtra("share");
-//        final int score=(int)getIntent().getSerializableExtra("score");
-//        int shared_level2=(int)getIntent().getSerializableExtra("shared_level2");
-
-
-           mAuth=FirebaseAuth.getInstance();
-        FirebaseDatabase.getInstance().getReference("users/" + mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+            mAuth=FirebaseAuth.getInstance();
+            FirebaseDatabase.getInstance().getReference("users/" + mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
 
                 Log.d("suthar", dataSnapshot.toString());
 
+                ProgressDialog progressDialog = new ProgressDialog(DashboardActivity.this);
+                progressDialog.setMessage("Analysing Responses" +"\n"+ "Please wait..");
+                progressDialog.show();
+
                 String s= dataSnapshot.child("Score").getValue().toString();
                 String s1=dataSnapshot.child("Level1").getValue().toString();
                 String s2=dataSnapshot.child("Level2").getValue().toString();
+
 
 
                 score0=s;
@@ -73,23 +74,19 @@ public class DashboardActivity extends AppCompatActivity {
                 SCORE=score;
                 SCORE/=6;
                 SCORE*=100;
-//        int shared_level1=-2;
-//
-//        if(shared_level2==-2||shared_level2==-1)
-//            shared_level2=0;
 
                 textView3=findViewById(R.id.textView3);
                 textView4=findViewById(R.id.textView4);
-//        textView5=findViewById(R.id.textView5);
                 textView3.setText("Level 1 \n Shared-"+shared_level1);
                 textView4.setText("Level 2 \n Shared-"+shared_level2);
-//      textView5.setText("Your Final Score is "+score);
 
                 pieChart = (PieChart) findViewById(R.id.chart1);
 
                 entries = new ArrayList<>();
 
                 PieEntryLabels = new ArrayList<String>();
+
+
 
 
                 AddValuesToPIEENTRY();
@@ -107,12 +104,14 @@ public class DashboardActivity extends AppCompatActivity {
                 pieChart.setData(pieData);
 
                 pieChart.animateY(3000);
+                progressDialog.dismiss();
 
 
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
 
             }
         });
@@ -122,47 +121,6 @@ public class DashboardActivity extends AppCompatActivity {
 
         int x=(int)getIntent().getSerializableExtra("mapid");
         a=x;
-//        int score=Integer.valueOf(score0);
-//        int shared_level1=Integer.valueOf(shared_level10);
-//        int shared_level2=Integer.valueOf(shared_level20);
-
-//        SCORE=score;
-//        SCORE/=6;
-//        SCORE*=100;
-////        int shared_level1=-2;
-////
-////        if(shared_level2==-2||shared_level2==-1)
-////            shared_level2=0;
-//
-//       textView3=findViewById(R.id.textView3);
-//        textView4=findViewById(R.id.textView4);
-////        textView5=findViewById(R.id.textView5);
-//      textView3.setText(""+shared_level1);
-//      textView4.setText(""+shared_level2);
-////      textView5.setText("Your Final Score is "+score);
-//
-//        pieChart = (PieChart) findViewById(R.id.chart1);
-//
-//        entries = new ArrayList<>();
-//
-//        PieEntryLabels = new ArrayList<String>();
-//
-//
-//        AddValuesToPIEENTRY();
-//
-//        AddValuesToPieEntryLabels();
-//
-//        pieDataSet = new PieDataSet(entries, "");
-//
-//
-//        pieData = new PieData(PieEntryLabels, pieDataSet);
-//
-//        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-//        pieDataSet.setValueTextSize(18);
-//
-//        pieChart.setData(pieData);
-//
-//        pieChart.animateY(3000);
     }
     @Override
     public void onBackPressed() {
@@ -185,5 +143,19 @@ public class DashboardActivity extends AppCompatActivity {
 
         PieEntryLabels.add("Matching");
         PieEntryLabels.add("Not Matching");
+    }
+
+    void gaurav(int i){
+        ProgressDialog progressDialog = new ProgressDialog(DashboardActivity.this);
+        if(i==1)
+        {
+            progressDialog.dismiss();
+        }
+        else
+        {
+
+            progressDialog.setMessage("Analysing Responses" +"\n"+ "Please wait..");
+            progressDialog.show();
+        }
     }
 }
