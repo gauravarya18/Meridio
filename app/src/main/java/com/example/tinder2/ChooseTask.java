@@ -5,10 +5,11 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -18,11 +19,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,12 +39,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import android.app.ProgressDialog;
-import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ChooseTask extends AppCompatActivity {
@@ -51,18 +51,19 @@ public class ChooseTask extends AppCompatActivity {
     ImageButton sendit;
     int x;
     Uri uri;
-    TextView nameuser, walletuser, pagetitle, pagesubtitle,tv;
+    TextView nameuser, walletuser, pagetitle, pagesubtitle, tv;
     ProgressDialog progressDialog;
     FirebaseAuth mAuth;
     Button btnguide;
-    Animation atg, atgtwo, atgthree,atgfour;
+    Animation atg, atgtwo, atgthree, atgfour;
     ImageView imageView3, change;
     ImageButton iclist, icapps, icplug, icnet;
-    Dialog myDialog,fdDialog;
-    String m="Male";
+    Dialog myDialog, fdDialog;
+    String m = "Male";
     TextView fdtv;
     int share[];
-    String score0,shared_level10,shared_level20;
+    String score0, shared_level10, shared_level20;
+    String name="name";
 
     private Button btnChoose, btnUpload;
     private ImageView imageView;
@@ -78,18 +79,17 @@ public class ChooseTask extends AppCompatActivity {
         setContentView(R.layout.activity_choose_task);
 
         myDialog = new Dialog(this);
-        fdDialog=new Dialog(this);
-        fdtv=findViewById(R.id.feedback);
+        fdDialog = new Dialog(this);
+        fdtv = findViewById(R.id.feedback);
 
         final int x = (int) getIntent().getSerializableExtra("mapid");
         atg = AnimationUtils.loadAnimation(this, R.anim.atg);
         atgtwo = AnimationUtils.loadAnimation(this, R.anim.atgtwo);
         atgthree = AnimationUtils.loadAnimation(this, R.anim.atgthree);
-        atgfour=  AnimationUtils.loadAnimation(this, R.anim.atgfour);
+        atgfour = AnimationUtils.loadAnimation(this, R.anim.atgfour);
         mAuth = FirebaseAuth.getInstance();
         nameuser = findViewById(R.id.nameuser);
-        change=findViewById(R.id.editoptn);
-
+        change = findViewById(R.id.editoptn);
 
 
 //        fdtv.setOnClickListener(new View.OnClickListener() {
@@ -102,26 +102,26 @@ public class ChooseTask extends AppCompatActivity {
         imageView3 = findViewById(R.id.imageView3);
 
         //Setting region in textview with id tv
-        tv=(TextView) findViewById(R.id.tv);
-        if(x==1)
+        tv = (TextView) findViewById(R.id.tv);
+        if (x == 1)
             tv.setText("Latin America");
-        else if(x==2)
+        else if (x == 2)
             tv.setText("North America");
-        else if(x==3)
+        else if (x == 3)
             tv.setText("Australia");
-        else if(x==4)
+        else if (x == 4)
             tv.setText("Asia");
-        else if(x==5)
+        else if (x == 5)
             tv.setText("Africa");
-        else if(x==6)
+        else if (x == 6)
             tv.setText("Arab");
-        else if(x==7)
+        else if (x == 7)
             tv.setText("Europe");
 
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ChooseTask.this,MapsActivity.class);
+                Intent intent = new Intent(ChooseTask.this, MapsActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -135,9 +135,8 @@ public class ChooseTask extends AppCompatActivity {
                         R.anim.zoom_out);
                 icapps.startAnimation(animation);
                 Intent intent = new Intent(ChooseTask.this, AboutMe.class);
-                //intent.putExtra("mapid", x);
+                intent.putExtra("mapid", x);
                 startActivity(intent);
-
 
 
                 return;
@@ -151,10 +150,10 @@ public class ChooseTask extends AppCompatActivity {
                         R.anim.zoom_out);
                 icnet.startAnimation(animation);
                 Intent intent = new Intent(ChooseTask.this, DashboardActivity.class);
-                intent.putExtra("mapid",x);
-                intent.putExtra("share",0);
-                intent.putExtra("score",0);
-                intent.putExtra("shared_level2",0);
+                intent.putExtra("mapid", x);
+                intent.putExtra("share", 0);
+                intent.putExtra("score", 0);
+                intent.putExtra("shared_level2", 0);
                 startActivity(intent);
 
                 return;
@@ -182,8 +181,8 @@ public class ChooseTask extends AppCompatActivity {
                 iclist.startAnimation(animation);
                 Intent intent = new Intent(ChooseTask.this, NewsActivity.class);
                 intent.putExtra("mapid", x);
-                intent.putExtra("level",1);
-                intent.putExtra("share",share);
+                intent.putExtra("level", 1);
+                intent.putExtra("share", share);
                 startActivity(intent);
                 finish();
 
@@ -217,13 +216,11 @@ public class ChooseTask extends AppCompatActivity {
 
         btnguide.startAnimation(atgthree);
         fdtv.startAnimation(atgfour);
-        final TextView topname=findViewById(R.id.nameuser);
-        final ImageView userimg=findViewById(R.id.topuserpic);
-
+        final TextView topname = findViewById(R.id.nameuser);
+        final ImageView userimg = findViewById(R.id.topuserpic);
 
 
         //fetching score from database
-
 
 
         //Adding name in choose Activity
@@ -232,20 +229,18 @@ public class ChooseTask extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
 
-
-
                 Log.d("suthar", dataSnapshot.toString());
-                String name = dataSnapshot.child("name").getValue(String.class);
+                name = dataSnapshot.child("name").getValue(String.class);
                 String url = dataSnapshot.child("url").getValue(String.class);
-                feed= dataSnapshot.child("feedback").getValue(String.class);
-                topname.setText("Hi, "+name +" !");
+                feed = dataSnapshot.child("feedback").getValue(String.class);
+                topname.setText("Hi, " + name.toUpperCase() + " !");
 
 
-//                Glide.with(ChooseTask.this)
-//                        .load(url)
-//                        .placeholder(R.drawable.profile_ic)
-//                        .apply(RequestOptions.circleCropTransform())
-//                        .into(userimg);
+                Glide.with(ChooseTask.this)
+                        .load(url)
+                        .placeholder(R.drawable.profile_ic)
+                        .apply(RequestOptions.circleCropTransform())
+                        .into(userimg);
 
             }
 
@@ -254,9 +249,6 @@ public class ChooseTask extends AppCompatActivity {
 
             }
         });
-
-
-
 
 
     }
@@ -281,7 +273,7 @@ public class ChooseTask extends AppCompatActivity {
         imageView = myDialog.findViewById(R.id.userpic);
         final TextView mName = myDialog.findViewById(R.id.name);
         final TextView mAge = myDialog.findViewById(R.id.age);
-        final TextView mGender =myDialog.findViewById(R.id.genderpop);
+        final TextView mGender = myDialog.findViewById(R.id.genderpop);
         //final ProgressBar progressBar=myDialog.findViewById(R.id.simpleProgressBar);
 
 
@@ -301,19 +293,32 @@ public class ChooseTask extends AppCompatActivity {
                 String name = dataSnapshot.child("name").getValue(String.class);
                 String age = dataSnapshot.child("age").getValue(String.class);
                 String url = dataSnapshot.child("url").getValue(String.class);
-                String gender= dataSnapshot.child("gender").getValue().toString();
+                String gender = dataSnapshot.child("gender").getValue().toString();
 
 
                 mName.setText(name);
-                mAge.setText(age+" yrs");
+                mAge.setText(age + " yrs");
 
 
+                mGender.setText(gender);
 
-                    mGender.setText(gender);
+                Log.d("suthar", url);
 
 
                 Glide.with(ChooseTask.this)
                         .load(url)
+                        .addListener(new RequestListener<Drawable>() {
+                            @Override
+                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                                Log.d("suthar", e.getMessage().toString());
+                                return false;
+                            }
+
+                            @Override
+                            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                                return false;
+                            }
+                        })
                         .placeholder(R.drawable.profile_ic)
                         .apply(RequestOptions.circleCropTransform())
                         .into(imageView);
@@ -322,6 +327,8 @@ public class ChooseTask extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                Toast.makeText(ChooseTask.this, "Error !", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -357,7 +364,7 @@ public class ChooseTask extends AppCompatActivity {
 
     private void uploadImage(Uri uri) {
         final ProgressDialog progressDialog = new ProgressDialog(ChooseTask.this);
-        progressDialog.setMessage("Applying Changes" +"\n"+ "Please wait..");
+        progressDialog.setMessage("Applying Changes" + "\n" + "Please wait..");
         progressDialog.show();
 
         final StorageReference ref = FirebaseStorage.getInstance().getReference(mAuth.getUid()).child(uri.getLastPathSegment());
@@ -377,7 +384,6 @@ public class ChooseTask extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
                 if (task.isSuccessful()) {
-
 
 
                     Uri downloadUri = task.getResult();
@@ -417,7 +423,7 @@ public class ChooseTask extends AppCompatActivity {
     }
 
 
-    public void logoutUser (View view){
+    public void logoutUser(View view) {
         mAuth.signOut();
         Intent intent = new Intent(ChooseTask.this, bootActivity.class);
         startActivity(intent);
@@ -425,8 +431,8 @@ public class ChooseTask extends AppCompatActivity {
 
         return;
     }
-    public void feedback(View v)
-    {
+
+    public void feedback(View v) {
         TextView txtclose;
 
         fdDialog.setContentView(R.layout.feedback);
@@ -443,17 +449,17 @@ public class ChooseTask extends AppCompatActivity {
         fdDialog.show();
 
 
-        getfeedback=fdDialog.findViewById(R.id.writefeedback);
+        getfeedback = fdDialog.findViewById(R.id.writefeedback);
 
 
-        ImageButton sendit=fdDialog.findViewById(R.id.send);
+        ImageButton sendit = fdDialog.findViewById(R.id.send);
         sendit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 String feedback=getfeedback.getText().toString();
+                String feedback = getfeedback.getText().toString();
                 String userId = mAuth.getCurrentUser().getUid();
-                if(!feedback.equals("")) {
-                    feedback=feed+"/"+feedback;
+                if (!feedback.equals("")) {
+                    feedback = feed + "/" + feedback;
                     HashMap<String, Object> map = new HashMap<>();
                     map.put("feedback", feedback);
 
@@ -461,9 +467,7 @@ public class ChooseTask extends AppCompatActivity {
                     Toast.makeText(ChooseTask.this, "Thanks for your valuable suggestion.", Toast.LENGTH_SHORT).show();
                     getfeedback.setText("");
                     fdDialog.dismiss();
-                }
-                else
-                {
+                } else {
                     Toast.makeText(ChooseTask.this, "Please Enter Your Valuable Inputs", Toast.LENGTH_SHORT).show();
                 }
             }

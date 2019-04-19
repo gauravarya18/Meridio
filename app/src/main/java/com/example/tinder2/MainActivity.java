@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             public void onRightCardExit(Object dataObject) {
                 Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
                 if(count==6) {
-                    for(int i=0;i<share.length;i++)
+                    for(int i=1;i<share.length-1;i++)
                     {
                         if(share[i]==1)
                             shared_level1++;

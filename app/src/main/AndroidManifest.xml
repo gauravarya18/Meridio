@@ -18,7 +18,6 @@
         <activity android:name=".MapsActivity" />
         <activity android:name=".NewsActivity" />
         <activity android:name=".DashboardActivity" />
-        <activity android:name=".ProfileActivity" />
         <activity android:name=".bootActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
