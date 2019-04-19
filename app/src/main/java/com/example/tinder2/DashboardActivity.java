@@ -2,6 +2,7 @@ package com.example.tinder2;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,22 +42,23 @@ public class DashboardActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
      String score0="0",shared_level10="0",shared_level20="0";
      int score,shared_level1,shared_level2;
+     int g=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+//
+
             mAuth=FirebaseAuth.getInstance();
             FirebaseDatabase.getInstance().getReference("users/" + mAuth.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
+                @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
 
-                Log.d("suthar", dataSnapshot.toString());
 
-                ProgressDialog progressDialog = new ProgressDialog(DashboardActivity.this);
-                progressDialog.setMessage("Analysing Responses" +"\n"+ "Please wait..");
-                progressDialog.show();
+                    Log.d("suthar", dataSnapshot.toString());
+
 
                 String s= dataSnapshot.child("Score").getValue().toString();
                 String s1=dataSnapshot.child("Level1").getValue().toString();
@@ -79,6 +81,8 @@ public class DashboardActivity extends AppCompatActivity {
                 textView4=findViewById(R.id.textView4);
                 textView3.setText("Level 1 \n Shared-"+shared_level1);
                 textView4.setText("Level 2 \n Shared-"+shared_level2);
+
+
 
                 pieChart = (PieChart) findViewById(R.id.chart1);
 
@@ -104,7 +108,8 @@ public class DashboardActivity extends AppCompatActivity {
                 pieChart.setData(pieData);
 
                 pieChart.animateY(3000);
-                progressDialog.dismiss();
+                g=1;
+
 
 
             }
@@ -121,6 +126,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         int x=(int)getIntent().getSerializableExtra("mapid");
         a=x;
+
     }
     @Override
     public void onBackPressed() {

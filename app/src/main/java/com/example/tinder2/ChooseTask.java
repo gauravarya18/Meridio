@@ -159,19 +159,22 @@ public class ChooseTask extends AppCompatActivity {
                 return;
             }
         });
-//        icplug = findViewById(R.id.profile);
-//        icplug.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
-//                        R.anim.zoom_out);
-//                icplug.startAnimation(animation);
-//                Intent intent = new Intent(ChooseTask.this, ProfileActivity.class);
-//                startActivity(intent);
-//
-//                return;
-//            }
-//        });
+        icplug = findViewById(R.id.profile);
+        icplug.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.zoom_out);
+                icplug.startAnimation(animation);
+                mAuth.signOut();
+                Intent intent = new Intent(ChooseTask.this, bootActivity.class);
+                startActivity(intent);
+                finish();
+
+
+                return;
+            }
+        });
         iclist = findViewById(R.id.play);
         iclist.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -423,14 +426,10 @@ public class ChooseTask extends AppCompatActivity {
     }
 
 
-    public void logoutUser(View view) {
-        mAuth.signOut();
-        Intent intent = new Intent(ChooseTask.this, bootActivity.class);
-        startActivity(intent);
-        finish();
-
-        return;
-    }
+//    public void logoutUser(View view) {
+//
+//        return;
+//    }
 
     public void feedback(View v) {
         TextView txtclose;

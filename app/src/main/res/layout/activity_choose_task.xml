@@ -151,7 +151,7 @@
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/button_dash"
                     android:src="@drawable/logout_ic"
-                    android:onClick="logoutUser"/>
+                    />
 
                 <TextView
                     android:id="@+id/profile_text"
