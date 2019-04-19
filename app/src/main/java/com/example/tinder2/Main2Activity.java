@@ -28,7 +28,7 @@ public class Main2Activity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     int count=0;
-    int share[]=new int[8];
+    int share[]=new int[9];
 
     TextView level;
 
@@ -83,14 +83,17 @@ public class Main2Activity extends AppCompatActivity {
                 //If you want to use it just cast it (String) dataObject
                 Toast.makeText(Main2Activity.this, "left", Toast.LENGTH_SHORT).show();
                 share[count]=0;
-                if(count==7)
+                if(count==8)
                 {
-                    Intent intent=new Intent(Main2Activity.this,ChooseTask.class);
+                    Intent intent=new Intent(Main2Activity.this,NewsActivity.class);
+                    intent.putExtra("share",share);
                     intent.putExtra("mapid",a);
 
+                    intent.putExtra("level",2);
                     startActivity(intent);
                     finish();
                 }
+
                 count++;
             }
 
@@ -99,7 +102,7 @@ public class Main2Activity extends AppCompatActivity {
                 Toast.makeText(Main2Activity.this, "right", Toast.LENGTH_SHORT).show();
                 share[count]=1;
 
-                if(count==7)
+                if(count==8)
                 {
                     Intent intent=new Intent(Main2Activity.this,NewsActivity.class);
                     intent.putExtra("share",share);
@@ -114,7 +117,7 @@ public class Main2Activity extends AppCompatActivity {
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
-                list.add(new NEWS("Level 2",""));
+                list.add(new NEWS("Round 2 \n Let's Play !!",""));
                 arrayAdapter.notifyDataSetChanged();
                 Log.d("LIST", "notified");
 

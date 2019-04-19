@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     // = (ArrayList<String>) getIntent().getSerializableExtra("a1");
 
     private FirebaseAuth mAuth;
-    int share[]=new int[8];
+    int share[]=new int[9];
     TextView level;
     int shared_level2=0;
     int shared_level1=0;
@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
         final ArrayList<NEWS> list = new ArrayList<>();
 
-        for (int i = 1; i < Titles.size(); i++) {
-            list.add(new NEWS(Titles.get(i),Urls.get(i-1)));
+        for (int i = 2; i < Titles.size(); i++) {
+            list.add(new NEWS(Titles.get(i),Urls.get(i-2)));
         }
 
         arrayAdapter = new MyAdapter(this, list);
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             public void onRightCardExit(Object dataObject) {
                 Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
                 if(count==6) {
-                    for(int i=1;i<share.length-1;i++)
+                    for(int i=2;i<share.length-1;i++)
                     {
                         if(share[i]==1)
                             shared_level1++;

@@ -41,7 +41,7 @@ public class NewsActivity extends AppCompatActivity {
     private ArrayList<String> Urls;
     private  ArrayList<String> Contents;
     int i=0,x,levelid;
-    int share[]=new int[8];
+    int share[]=new int[9];
 
 
 
@@ -286,6 +286,8 @@ public class NewsActivity extends AppCompatActivity {
                     Log.d("shubh", dataSnapshot.toString());
                     Titles.add("Instructions");
                     Contents.add("Swipe Right, if you want to share the NEWS \n Left, if you don't. \n For detailed Instructions, kindly refer to \n GUIDE ME");
+                    Titles.add("Round 1 \n Get Ready !!");
+                    Contents.add("");
 
                     Titles.add(dataSnapshot.child("sports1").getValue(String.class));
                     Titles.add(dataSnapshot.child("sports2").getValue(String.class));
