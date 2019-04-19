@@ -1,5 +1,6 @@
 package com.example.tinder2;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -69,6 +70,7 @@ public class RegistrationActivity extends AppCompatActivity {
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                gaurav(2);
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
                 final String name = mName.getText().toString();
@@ -124,6 +126,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
                             FirebaseDatabase.getInstance().getReference("users/" + userId).setValue(map);
+                            gaurav(1);
 
                         }
                     }
@@ -162,6 +165,19 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (checked)
                     mGender="Female";
                     break;
+        }
+    }
+    void gaurav(int i){
+        ProgressDialog progressDialog = new ProgressDialog(RegistrationActivity.this);
+        if(i==1)
+        {
+            progressDialog.dismiss();
+        }
+        else
+        {
+
+            progressDialog.setMessage("Authenticating" +"\n"+ "Please wait..");
+            progressDialog.show();
         }
     }
 
