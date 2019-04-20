@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Meridio</string>
+    <string name="contentAbout">"Meridio is a survey application that assists the researchers to systematically monitor the user response.The interactive and user-friendly interface of the application tests the difference in user's response to random news contents in textual and graphical formats.
+Meridio comes with it's unique feature of global reach, it convers the major geographical and cultural areas and lets the user have the comfort of playing with the news of his region of interest,and the researcher with comprehensive and accurate results.
+"</string>
 </resources>

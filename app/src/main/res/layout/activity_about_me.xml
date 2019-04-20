@@ -13,6 +13,7 @@
         android:layout_height="match_parent"
         android:background="#56C4F0">
 
+
         <TextView
             android:id="@+id/wrapper1"
             android:layout_width="372dp"
@@ -49,7 +50,6 @@
             android:src="@drawable/shuhu"
             app:civ_border_color="#fff"
             app:civ_border_width="3dp"
-
             app:layout_constraintBottom_toBottomOf="@+id/wrapper1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.828"
@@ -63,7 +63,7 @@
             android:layout_marginStart="92dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="108dp"
-            android:text="Gaurav \n Arya"
+            android:text="Gaurav\nArya"
             android:textAlignment="center"
             android:textColor="#000"
             android:textSize="15sp"
@@ -80,7 +80,7 @@
             android:layout_marginStart="260dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="108dp"
-            android:text="Shubhankar \n Gaikwad"
+            android:text="Shubhankar\nGaikwad"
             android:textAlignment="center"
             android:textColor="#000"
             android:textSize="15sp"
@@ -113,7 +113,7 @@
         <TextView
             android:id="@+id/wrapper2"
             android:layout_width="372dp"
-            android:layout_height="338dp"
+            android:layout_height="398dp"
             android:layout_marginStart="8dp"
 
             android:layout_marginTop="40dp"
@@ -127,22 +127,20 @@
 
         <TextView
             android:id="@+id/aboutContent"
-            android:layout_width="wrap_content"
+            android:layout_width="381dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:textColor="#000"
             android:fontFamily="@font/ml"
             android:padding="18sp"
+            android:text="@string/contentAbout"
             android:textAlignment="center"
-            android:text="Meridio basically meaning sharing in greek.It helps us to study about human physcology about how much of attention they pay to text as compared to images.This project wouldn't have been succesful without able guidendence of Prof. Chiranjoy Chatopadahay. A sicencere thank to abhinav sutar to provide time and help to solve our doubts regularly."
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="#000"
+            app:layout_constraintBottom_toBottomOf="@+id/wrapper2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/headingAbout"
-            app:layout_constraintVertical_bias="0.061" />
+            app:layout_constraintTop_toBottomOf="@+id/headingAbout" />
 
         <TextView
             android:id="@+id/meridio"
@@ -153,7 +151,8 @@
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/alexbrushregular"
             android:text="Meridio"
-            android:textColor="#000"
+            android:textStyle="bold"
+            android:textColor="#fff"
             android:textSize="60sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

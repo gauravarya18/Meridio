@@ -76,7 +76,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="164dp"
         android:layout_marginEnd="8dp"
-        android:src="@drawable/cardsgif1"
+        android:src="@drawable/cards"
 
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
