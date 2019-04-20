@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -310,18 +311,6 @@ public class ChooseTask extends AppCompatActivity {
 
                 Glide.with(ChooseTask.this)
                         .load(url)
-                        .addListener(new RequestListener<Drawable>() {
-                            @Override
-                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                                Log.d("suthar", e.getMessage().toString());
-                                return false;
-                            }
-
-                            @Override
-                            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                                return false;
-                            }
-                        })
                         .placeholder(R.drawable.profile_ic)
                         .apply(RequestOptions.circleCropTransform())
                         .into(imageView);
@@ -359,6 +348,7 @@ public class ChooseTask extends AppCompatActivity {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             filePath = data.getData();
             // Glide.with(this).load(filePath).into(imageView);
+           // imageView.setImageURI(Uri.parse(filePath.toString()));
             uploadImage(filePath);
             //ProgressDialog(ChooseTask.this);
 
@@ -366,9 +356,11 @@ public class ChooseTask extends AppCompatActivity {
     }
 
     private void uploadImage(Uri uri) {
+
         final ProgressDialog progressDialog = new ProgressDialog(ChooseTask.this);
         progressDialog.setMessage("Applying Changes" + "\n" + "Please wait..");
         progressDialog.show();
+
 
         final StorageReference ref = FirebaseStorage.getInstance().getReference(mAuth.getUid()).child(uri.getLastPathSegment());
         UploadTask uploadTask = ref.putFile(uri);
@@ -395,8 +387,15 @@ public class ChooseTask extends AppCompatActivity {
                             .load(downloadUri)
                             .apply(RequestOptions.circleCropTransform())
                             .into(imageView);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressDialog.dismiss();
+                        }
+                    }, 5000);
 
                     saveImageUrlToDatabase(downloadUri.toString());
+
 
                 } else {
                     Log.d("suthar", "Error");
@@ -405,14 +404,9 @@ public class ChooseTask extends AppCompatActivity {
                 }
 
 
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        // Magic here
-//                    }
-//                }, 3000);
 
-                progressDialog.dismiss();
+
+
 
             }
         });
@@ -423,6 +417,7 @@ public class ChooseTask extends AppCompatActivity {
         HashMap<String, Object> map = new HashMap<>();
         map.put("url", url);
         FirebaseDatabase.getInstance().getReference("users/" + mAuth.getUid()).updateChildren(map);
+
     }
 
 

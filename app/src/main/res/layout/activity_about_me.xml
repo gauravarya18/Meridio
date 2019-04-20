@@ -16,7 +16,7 @@
         <TextView
             android:id="@+id/wrapper1"
             android:layout_width="372dp"
-            android:layout_height="343dp"
+            android:layout_height="260dp"
 
             android:layout_marginStart="8dp"
             android:layout_marginTop="40dp"
@@ -28,63 +28,67 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/devP1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="92dp"
-            android:layout_marginBottom="152dp"
-            android:src="@drawable/userpic"
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/gaurav"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="88dp"
+            android:src="@drawable/gugu"
+            app:civ_border_color="#fff"
+            app:civ_border_width="3dp"
             app:layout_constraintBottom_toBottomOf="@+id/wrapper1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.234"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:layout_constraintHorizontal_bias="0.175"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:id="@+id/devP2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="152dp"
-            android:src="@drawable/userpic"
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/shubhankar"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="88dp"
+            android:src="@drawable/shuhu"
+            app:civ_border_color="#fff"
+            app:civ_border_width="3dp"
+
             app:layout_constraintBottom_toBottomOf="@+id/wrapper1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.831"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:layout_constraintHorizontal_bias="0.828"
+            app:layout_constraintStart_toStartOf="parent" />
+
 
         <TextView
             android:id="@+id/dev1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="68dp"
+            android:layout_marginStart="92dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Gaurav Arya"
+            android:layout_marginBottom="108dp"
+            android:text="Gaurav \n Arya"
+            android:textAlignment="center"
             android:textColor="#000"
-            android:textSize="15dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/wrapper1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/devP1"
-            app:layout_constraintVertical_bias="0.205" />
+            app:layout_constraintTop_toBottomOf="@+id/gaurav"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/dev2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="212dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginBottom="8dp"
-            android:text="Shubhankar Gaikwad"
+            android:layout_marginStart="260dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="108dp"
+            android:text="Shubhankar \n Gaikwad"
+            android:textAlignment="center"
             android:textColor="#000"
             android:textSize="15sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/wrapper1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/devP2"
-            app:layout_constraintVertical_bias="0.174" />
+            app:layout_constraintTop_toBottomOf="@+id/shubhankar"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/headingTeam"
@@ -123,13 +127,17 @@
 
         <TextView
             android:id="@+id/aboutContent"
-            android:layout_width="327dp"
-            android:layout_height="184dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:text="AboutAboutAboutAboutAboutAboutAboutAboutAboutAboutAboutAboutAboutAbout"
+            android:textColor="#000"
+            android:fontFamily="@font/ml"
+            android:padding="18sp"
+            android:textAlignment="center"
+            android:text="Meridio basically meaning sharing in greek.It helps us to study about human physcology about how much of attention they pay to text as compared to images.This project wouldn't have been succesful without able guidendence of Prof. Chiranjoy Chatopadahay. A sicencere thank to abhinav sutar to provide time and help to solve our doubts regularly."
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -141,17 +149,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="64dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="50dp"
-            android:text="MERIDIO"
+            android:fontFamily="@font/alexbrushregular"
+            android:text="Meridio"
             android:textColor="#000"
-            android:textSize="50sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="60sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/wrapper2"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/wrapper2" />
 
         <TextView
             android:id="@+id/headingAbout"
@@ -179,10 +185,10 @@
             android:src="@drawable/ic_copyright_black_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.835"
+            app:layout_constraintHorizontal_bias="0.804"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/wrapper2"
-            app:layout_constraintVertical_bias="0.545"
+            app:layout_constraintVertical_bias="0.547"
             tools:srcCompat="@drawable/ic_copyright_black_24dp" />
 
 

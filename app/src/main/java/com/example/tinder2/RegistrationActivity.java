@@ -80,25 +80,30 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (email.isEmpty()) {
                     mEmail.setError("Email is required");
                     mEmail.requestFocus();
+                    gaurav(1);
                     return;
                 }
                 if (name.isEmpty()) {
                     mEmail.setError("Email is required");
                     mEmail.requestFocus();
+                    gaurav(1);
                     return;
                 }
                 if (age.isEmpty()) {
                     mEmail.setError("Email is required");
                     mEmail.requestFocus();
+                    gaurav(1);
                     return;
                 }
                 if (password.isEmpty()) {
                     mPassword.setError("Password is required");
                     mPassword.requestFocus();
+                    gaurav(1);
                     return;
                 }
                 if (password.length() < 6) {
                     mPassword.setError("Minimum length of password must be 6");
+                    gaurav(1);
                     mPassword.requestFocus();
                     return;
                 }
@@ -115,6 +120,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         } else {
 
                             String userId = mAuth.getCurrentUser().getUid();
+                            String url="https://firebasestorage.googleapis.com/v0/b/tinder-2-bb59a.appspot.com/o/profile_ic.png?alt=media&token=d0f38c36-aa3b-44c8-8cf0-de17f0537f9b";
                             HashMap<String, Object> map = new HashMap<>();
                             map.put("name", name);
                             map.put("age", age);
@@ -123,6 +129,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             map.put("Score",0);
                             map.put("Level1",0);
                             map.put("Level2",0);
+                            map.put("url",url);
 
 
                             FirebaseDatabase.getInstance().getReference("users/" + userId).setValue(map);

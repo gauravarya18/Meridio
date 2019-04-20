@@ -107,7 +107,7 @@ public class bootActivity extends AppCompatActivity {
 
         mLogin = (Button) findViewById(R.id.login);
 
-        mEmail = (EditText) findViewById(R.id.email);
+        mEmail = (EditText) findViewById(R.id.username);
         mPassword = (EditText) findViewById(R.id.password);
 
 
@@ -125,6 +125,7 @@ public class bootActivity extends AppCompatActivity {
                 {
                     mEmail.setError("Email is required");
                     mEmail.requestFocus();
+                    gaurav(1);
                     return;
                 }
 
@@ -132,12 +133,14 @@ public class bootActivity extends AppCompatActivity {
                 {
                     mPassword.setError("Password is required");
                     mPassword.requestFocus();
+                    gaurav(1);
                     return;
                 }
                 if(password.length()<6)
                 {
                     mPassword.setError("Minimum length of password must be 6");
                     mPassword.requestFocus();
+                    gaurav(1);
                     return;
                 }
 
