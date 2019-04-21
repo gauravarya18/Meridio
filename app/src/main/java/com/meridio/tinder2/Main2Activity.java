@@ -79,8 +79,9 @@ public class Main2Activity extends AppCompatActivity {
                 //Do something on the left!
                 //You also have access to the original object.
                 //If you want to use it just cast it (String) dataObject
-                Toast.makeText(Main2Activity.this, "left", Toast.LENGTH_SHORT).show();
-                share[count]=0;
+                if(count>=2 && count<8)
+                {Toast.makeText(Main2Activity.this, "Not Shared", Toast.LENGTH_SHORT).show();
+                share[count]=0;}
                 if(count==8)
                 {
                     Intent intent=new Intent(Main2Activity.this,NewsActivity.class);
@@ -97,8 +98,9 @@ public class Main2Activity extends AppCompatActivity {
 
             @Override
             public void onRightCardExit(Object dataObject) {
-                Toast.makeText(Main2Activity.this, "right", Toast.LENGTH_SHORT).show();
-                share[count]=1;
+                if(count>=2 && count<8)
+                {Toast.makeText(Main2Activity.this, "Shared", Toast.LENGTH_SHORT).show();
+                share[count]=1;}
 
                 if(count==8)
                 {
@@ -132,7 +134,7 @@ public class Main2Activity extends AppCompatActivity {
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
-                Toast.makeText(Main2Activity.this, "clicked", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Main2Activity.this, "clicked", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -141,12 +141,20 @@ public class ResponseActivity extends AppCompatActivity {
     {
         @Override
         public void onPageSelected(int i) {
+            Log.d("counting","c"+count);
+            Log.d("i-","i-"+i);
             if (i < count) {
                 i = i % count;
                 addDotsIndicator(i);
                 mcurrentpg = i;
               Log.d("count","c"+count);
               Log.d("i-","i-"+i);
+              if(i==0)
+              {
+                  title.setText("Sample");
+                  share_un.setText("Share/Not Share");
+                  reason_response=null;
+              }
                 if (i == count - 1) {
                     nextButton.setEnabled(true);
                     nextButton.setVisibility(View.VISIBLE);
@@ -164,7 +172,10 @@ public class ResponseActivity extends AppCompatActivity {
                         }
                     });
                     nextButton.setText("Finish");
-                } else {
+                }
+                else {
+                    Log.d("count2","c"+count);
+                    Log.d("i2-","i-"+i);
                     nextButton.setEnabled(false);
                     nextButton.setVisibility(View.INVISIBLE);
                 }
@@ -232,7 +243,9 @@ public class ResponseActivity extends AppCompatActivity {
 
 
             }
+
         }
+
     };
     @SuppressWarnings("deprecation")
     public static Spanned fromHtml(String html){

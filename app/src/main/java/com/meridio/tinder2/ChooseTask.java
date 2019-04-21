@@ -235,11 +235,11 @@ public class ChooseTask extends AppCompatActivity {
                 topname.setText("Hi, " + name.toUpperCase() + " !");
 
 
-                Glide.with(ChooseTask.this)
-                        .load(url)
-                        .placeholder(R.drawable.profile_ic)
-                        .apply(RequestOptions.circleCropTransform())
-                        .into(userimg);
+//                Glide.with(ChooseTask.this)
+//                        .load(url)
+//                        .placeholder(R.drawable.profile_ic)
+//                        .apply(RequestOptions.circleCropTransform())
+//                        .into(userimg);
 
             }
 

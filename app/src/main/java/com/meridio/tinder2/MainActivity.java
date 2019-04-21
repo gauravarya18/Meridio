@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 //Do something on the left!
                 //You also have access to the original object.
                 //If you want to use it just cast it (String) dataObject
+                if(count<6)
                 Toast.makeText(MainActivity.this, "Not Shared", Toast.LENGTH_SHORT).show();
                 if(share[count+2]==0)
                 {score++;
@@ -86,9 +87,13 @@ public class MainActivity extends AppCompatActivity {
                 d++;
                 if(count==6) {
 
-                    Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
-                    intent.putExtra("mapid", a);
-
+                    Intent intent=new Intent(MainActivity.this,DashboardActivity.class);
+                    intent.putExtra("mapid",a);
+                    intent.putExtra("common",common_res);
+                    intent.putExtra("Titles",t1);
+                    intent.putExtra("Urls",u1);
+                    intent.putExtra("response_id",100);
+                    intent.putExtra("response_id_null",100);
                     startActivity(intent);
                     finish();
                 }
@@ -97,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onRightCardExit(Object dataObject) {
+                if(count<6)
                 Toast.makeText(MainActivity.this, "Shared", Toast.LENGTH_SHORT).show();
                 if(count==6) {
                     for(int i=2;i<share.length-1;i++)
@@ -137,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
 
-                list.add(new NEWS("Well Done !! \n (Swipe Right to See your Score.)","https://firebasestorage.googleapis.com/v0/b/tinder-2-bb59a.appspot.com/o/kisspng-trophy-clip-art-golden-trophy-5a713ae9136d04.1704861815173700890796.png?alt=media&token=d18bc99b-aa1d-4851-a3da-4770f5e1db6d"));
+                list.add(new NEWS("Well Done !! \n (Swipe to See your Score.)","https://firebasestorage.googleapis.com/v0/b/tinder-2-bb59a.appspot.com/o/kisspng-trophy-clip-art-golden-trophy-5a713ae9136d04.1704861815173700890796.png?alt=media&token=d18bc99b-aa1d-4851-a3da-4770f5e1db6d"));
                 arrayAdapter.notifyDataSetChanged();
                 Log.d("LIST", "notified");
 
@@ -153,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
-                Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -36,7 +36,7 @@ public class DashboardActivity extends AppCompatActivity {
     float SCORE;
     private FirebaseAuth mAuth;
      String score0="0",shared_level10="0",shared_level20="0";
-     int score,shared_level1,shared_level2;
+     int score=0,shared_level1,shared_level2;
      Button b1;
      int g=0;
     @Override
@@ -48,7 +48,7 @@ public class DashboardActivity extends AppCompatActivity {
         Log.d("response",""+response_id);
 
 //
-        if(response_id_null==0)
+        if(response_id_null==0 || score==0)
         {
             b1=findViewById(R.id.response);
             b1.setVisibility(View.INVISIBLE);
@@ -59,6 +59,9 @@ public class DashboardActivity extends AppCompatActivity {
             final ArrayList<String> Urls = (ArrayList<String>) getIntent().getSerializableExtra("Urls");
             final int common_res[] = (int[]) getIntent().getSerializableExtra("common");
             b1=findViewById(R.id.response);
+            b1.setEnabled(true);
+            b1.setVisibility(View.VISIBLE);
+
             b1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
