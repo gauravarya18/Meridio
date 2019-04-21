@@ -48,7 +48,7 @@ public class DashboardActivity extends AppCompatActivity {
         Log.d("response",""+response_id);
 
 //
-        if(response_id_null==0 || score==0)
+        if(response_id_null==0)
         {
             b1=findViewById(R.id.response);
             b1.setVisibility(View.INVISIBLE);
@@ -101,6 +101,7 @@ public class DashboardActivity extends AppCompatActivity {
                  score=Integer.valueOf(score0);
                  shared_level1=Integer.valueOf(shared_level10);
                  shared_level2=Integer.valueOf(shared_level20);
+
                 SCORE=score;
                 SCORE/=6;
                 SCORE*=100;
@@ -150,7 +151,12 @@ public class DashboardActivity extends AppCompatActivity {
         });
 
 
-
+        if(score==0)
+        {
+            b1=findViewById(R.id.response);
+            b1.setVisibility(View.INVISIBLE);
+            b1.setEnabled(false);
+        }
 
         int x=(int)getIntent().getSerializableExtra("mapid");
         a=x;

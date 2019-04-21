@@ -75,18 +75,19 @@ public class MainActivity extends AppCompatActivity {
                 //Do something on the left!
                 //You also have access to the original object.
                 //If you want to use it just cast it (String) dataObject
-                if(count<6)
-                Toast.makeText(MainActivity.this, "Not Shared", Toast.LENGTH_SHORT).show();
-                if(share[count+2]==0)
-                {score++;
-                  common_res[d]=0;}
-                  else
-                {
-                    common_res[d]=-1;
-                }
-                d++;
                 if(count==6) {
+                    for(int i=2;i<8;i++)
+                    {
+                        if(share[i]==1)
+                            shared_level1++;
 
+                    }
+                    HashMap<String, Object> map = new HashMap<>();
+                    map.put("Level1",shared_level1);
+                    map.put("Score",score);
+                    map.put("Level2",shared_level2);
+
+                    FirebaseDatabase.getInstance().getReference("users/" + mAuth.getCurrentUser().getUid()).updateChildren(map);
                     Intent intent=new Intent(MainActivity.this,DashboardActivity.class);
                     intent.putExtra("mapid",a);
                     intent.putExtra("common",common_res);
@@ -95,8 +96,21 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("response_id",100);
                     intent.putExtra("response_id_null",100);
                     startActivity(intent);
-                    finish();
+                    finish(); }
+                if(count<6)
+                Toast.makeText(MainActivity.this, "Not Shared", Toast.LENGTH_SHORT).show();
+                if(share[count+2]==0)
+                {
+                    score++;
+                    Log.d("score",""+count);
+                  common_res[d]=0;
                 }
+                  else
+                {
+                    common_res[d]=-1;
+                }
+                d++;
+
                  count++;
             }
 
@@ -105,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 if(count<6)
                 Toast.makeText(MainActivity.this, "Shared", Toast.LENGTH_SHORT).show();
                 if(count==6) {
-                    for(int i=2;i<share.length-1;i++)
+                    for(int i=2;i<8;i++)
                     {
                         if(share[i]==1)
                             shared_level1++;
@@ -127,13 +141,15 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish(); }
                 if(share[count+2]==1){
-                    score++;
-                common_res[d]=1;}
+                    score++;Log.d("score",""+count);
+                common_res[d]=1;
+                }
                 else
                 {
                     common_res[d]=-1;
                 }
                 d++;
+
                 shared_level2++;
 
                 count++;
