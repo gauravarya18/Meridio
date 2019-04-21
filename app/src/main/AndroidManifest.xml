@@ -12,9 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
-        android:usesCleartextTraffic="true"
-        >
-        <activity android:name=".Main2Activity"></activity>
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ResponseActivity"></activity>
+        <activity android:name=".Main2Activity" />
         <activity android:name=".AboutMe" />
         <activity android:name=".MapsActivity" />
         <activity android:name=".NewsActivity" />

@@ -69,7 +69,9 @@ public class GuideActivity extends AppCompatActivity {
 
         if(mDots.length>0)
         {
-            mDots[position].setTextColor(ContextCompat.getColor(this, R.color.White));
+
+                mDots[position%3].setTextColor(ContextCompat.getColor(this, R.color.White));
+
         }
     }
 
@@ -77,11 +79,12 @@ public class GuideActivity extends AppCompatActivity {
     {
         @Override
         public void onPageSelected(int i)
-        {
+        {  if(i<3) {
+            i = i % 3;
             addDotsIndicator(i);
-            mcurrentpg=i;
-            if(i==0)
-            {
+            mcurrentpg = i;
+
+            if (i == 0) {
                 nextButton.setEnabled(false);
                 nextButton.setText("");
                 Heading.setText("Choosing your desired region.");
@@ -92,26 +95,24 @@ public class GuideActivity extends AppCompatActivity {
 
 
             }
-            if(i==1)
-            {
+            if (i == 1) {
 
 
-                 Heading.setText("Swiping cards.");
+                Heading.setText("Swiping cards.");
                 nextButton.setEnabled(false);
                 nextButton.setText("");
                 gifImageView1.setVisibility(View.INVISIBLE);
                 gifImageView2.setVisibility(View.VISIBLE);
                 gifImageView3.setVisibility(View.INVISIBLE);
             }
-            if(i==2)
-            {
+            if (i == 2) {
                 nextButton.setEnabled(true);
 
                 Heading.setText("We value your suggestion.");
                 nextButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent=new Intent(GuideActivity.this,ChooseTask.class);
+                        Intent intent = new Intent(GuideActivity.this, ChooseTask.class);
                         startActivity(intent);
                         finish();
                     }
@@ -123,6 +124,7 @@ public class GuideActivity extends AppCompatActivity {
                 gifImageView3.setVisibility(View.VISIBLE);
 
             }
+        }
         }
     };
     @SuppressWarnings("deprecation")

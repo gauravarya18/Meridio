@@ -17,16 +17,18 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<String> al;
+    private ArrayList<String> a1,t1,u1;
     private int i,a,count=0;
     private MyAdapter arrayAdapter;
-    private ArrayList<String> a1;
+
     private FirebaseAuth mAuth;
     int share[]=new int[9];
+    int common_res[]=new int[7];
     TextView level;
     int shared_level2=0;
     int shared_level1=0;
-    int score=0;
+    int score=0,d=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> list1 = (ArrayList<String>) getIntent().getSerializableExtra("a1");
         ArrayList<String> Titles = (ArrayList<String>) getIntent().getSerializableExtra("Titles");
         ArrayList<String> Urls = (ArrayList<String>) getIntent().getSerializableExtra("Urls");
+        t1=new ArrayList<String>(Titles);
+        u1=new ArrayList<String>(Urls);
 
         Log.d("suthar", Titles.toString());
 
@@ -71,12 +75,18 @@ public class MainActivity extends AppCompatActivity {
                 //Do something on the left!
                 //You also have access to the original object.
                 //If you want to use it just cast it (String) dataObject
-                Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Not Shared", Toast.LENGTH_SHORT).show();
                 if(share[count+2]==0)
-                    score++;
+                {score++;
+                  common_res[d]=0;}
+                  else
+                {
+                    common_res[d]=-1;
+                }
+                d++;
                 if(count==6) {
 
-                    Intent intent = new Intent(MainActivity.this, ChooseTask.class);
+                    Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                     intent.putExtra("mapid", a);
 
                     startActivity(intent);
@@ -87,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onRightCardExit(Object dataObject) {
-                Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Shared", Toast.LENGTH_SHORT).show();
                 if(count==6) {
                     for(int i=2;i<share.length-1;i++)
                     {
@@ -103,10 +113,21 @@ public class MainActivity extends AppCompatActivity {
                     FirebaseDatabase.getInstance().getReference("users/" + mAuth.getCurrentUser().getUid()).updateChildren(map);
                     Intent intent=new Intent(MainActivity.this,DashboardActivity.class);
                     intent.putExtra("mapid",a);
+                    intent.putExtra("common",common_res);
+                    intent.putExtra("Titles",t1);
+                    intent.putExtra("Urls",u1);
+                    intent.putExtra("response_id",100);
+                    intent.putExtra("response_id_null",100);
                     startActivity(intent);
                     finish(); }
-                if(share[count+2]==1)
+                if(share[count+2]==1){
                     score++;
+                common_res[d]=1;}
+                else
+                {
+                    common_res[d]=-1;
+                }
+                d++;
                 shared_level2++;
 
                 count++;

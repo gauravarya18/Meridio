@@ -6,7 +6,10 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -34,13 +37,43 @@ public class DashboardActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
      String score0="0",shared_level10="0",shared_level20="0";
      int score,shared_level1,shared_level2;
+     Button b1;
      int g=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+       int response_id=(int)getIntent().getSerializableExtra("response_id");
+       int response_id_null=(int)getIntent().getSerializableExtra("response_id_null");
+        Log.d("response",""+response_id);
 
 //
+        if(response_id_null==0)
+        {
+            b1=findViewById(R.id.response);
+            b1.setVisibility(View.INVISIBLE);
+            b1.setEnabled(false);
+        }
+        if(response_id==100) {
+            final ArrayList<String> Titles = (ArrayList<String>) getIntent().getSerializableExtra("Titles");
+            final ArrayList<String> Urls = (ArrayList<String>) getIntent().getSerializableExtra("Urls");
+            final int common_res[] = (int[]) getIntent().getSerializableExtra("common");
+            b1=findViewById(R.id.response);
+            b1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent=new Intent(DashboardActivity.this,ResponseActivity.class);
+                    intent.putExtra("common",common_res);
+                    intent.putExtra("Titles",Titles);
+                    intent.putExtra("Urls",Urls);
+                    intent.putExtra("mapid",a);
+                    startActivity(intent);
+                    finish();;
+                }
+            });
+        }
+
+
 
             mAuth=FirebaseAuth.getInstance();
             FirebaseDatabase.getInstance().getReference("users/" + mAuth.getUid()).addValueEventListener(new ValueEventListener() {

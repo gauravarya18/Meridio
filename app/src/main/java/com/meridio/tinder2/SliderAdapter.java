@@ -24,13 +24,22 @@ public class SliderAdapter extends PagerAdapter {
                     //list of images
                     R.drawable.ic_launcher_background,
                     R.drawable.ic_launcher_background,
+                    R.drawable.ic_launcher_background,
+                    R.drawable.ic_launcher_background,
+                    R.drawable.ic_launcher_background,
+                    R.drawable.ic_launcher_background,
                     R.drawable.ic_launcher_background
+
             };
 
     public String[] slide_headings=
             {
                     "HEADING 1",
                     "HEADING 2",
+                    "HEADING 1",
+                    "HEADING 2",
+                    "HEADING 1",
+                    "HEADING 1",
                     "HEADING 3"
 
             };
@@ -38,6 +47,10 @@ public class SliderAdapter extends PagerAdapter {
             {
                     "Description 1",
                     "Description 2",
+                    "Description 1",
+                    "Description 2",
+                    "Description 1",
+                    "Description 1",
                     "Description 3"
 
             };
@@ -59,8 +72,8 @@ public class SliderAdapter extends PagerAdapter {
         View view=layoutInflater.inflate(R.layout.slidelayout,container,false);
       // ImageView slideImageView=(ImageView) view.findViewById(R.id.slide_image);
 
-        TextView slideHaeding=(TextView) view.findViewById(R.id.slide_heading);
-        TextView slideDeacription=(TextView) view.findViewById(R.id.slide_des);
+//        TextView slideHaeding=(TextView) view.findViewById(R.id.slide_heading);
+//        TextView slideDeacription=(TextView) view.findViewById(R.id.slide_des);
 
        // slideImageView.setImageResource(slide_image[position]);
         //slideHaeding.setText(slide_headings[position]);

@@ -269,11 +269,11 @@ public class NewsActivity extends AppCompatActivity {
             else if (x == 3) tv = "Australia";
             else if (x == 4) tv = "Asia";
             else if (x == 5) tv = "Africa";
-            else if (x == 6) tv = "Arab";
+            else if (x == 6) tv = "arab";
             else if (x == 7) tv = "Europe";
 
 
-            FirebaseDatabase.getInstance().getReference("News/" + tv).addValueEventListener(new ValueEventListener() {
+            FirebaseDatabase.getInstance().getReference("news/" + tv).addValueEventListener(new ValueEventListener() {
 
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -146,9 +146,10 @@ public class ChooseTask extends AppCompatActivity {
                 icnet.startAnimation(animation);
                 Intent intent = new Intent(ChooseTask.this, DashboardActivity.class);
                 intent.putExtra("mapid", x);
-                intent.putExtra("share", 0);
-                intent.putExtra("score", 0);
-                intent.putExtra("shared_level2", 0);
+                intent.putExtra("response_id",0);
+                intent.putExtra("response_id_null",0);
+
+
                 startActivity(intent);
 
                 return;

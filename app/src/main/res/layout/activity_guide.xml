@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".GuideActivity"
     >
+
     <ImageView
         android:id="@+id/bgapp"
-        android:layout_width="526dp"
+        android:layout_width="523dp"
         android:layout_height="900dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:scaleType="fitXY"
         android:src="@drawable/bgapp"
         app:layout_constraintEnd_toEndOf="parent"
