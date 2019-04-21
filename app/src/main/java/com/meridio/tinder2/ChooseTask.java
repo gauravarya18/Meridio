@@ -234,12 +234,13 @@ public class ChooseTask extends AppCompatActivity {
                 feed = dataSnapshot.child("feedback").getValue(String.class);
                 topname.setText("Hi, " + name.toUpperCase() + " !");
 
-
-//                Glide.with(ChooseTask.this)
-//                        .load(url)
-//                        .placeholder(R.drawable.profile_ic)
-//                        .apply(RequestOptions.circleCropTransform())
-//                        .into(userimg);
+                if (!ChooseTask.this.isFinishing()) {
+                    Glide.with(ChooseTask.this)
+                            .load(url)
+                            .placeholder(R.drawable.profile_ic)
+                            .apply(RequestOptions.circleCropTransform())
+                            .into(userimg);
+                }
 
             }
 

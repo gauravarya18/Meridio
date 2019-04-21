@@ -2,6 +2,7 @@ package com.meridio.tinder2;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,7 +38,7 @@ public class DashboardActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
      String score0="0",shared_level10="0",shared_level20="0";
      int score=0,shared_level1,shared_level2;
-     Button b1;
+     Button b1;int z;
      int g=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
        int response_id=(int)getIntent().getSerializableExtra("response_id");
        int response_id_null=(int)getIntent().getSerializableExtra("response_id_null");
+       z=response_id_null;
         Log.d("response",""+response_id);
 
 //
@@ -89,8 +91,11 @@ public class DashboardActivity extends AppCompatActivity {
 
 
                 String s= dataSnapshot.child("Score").getValue().toString();
+
                 String s1=dataSnapshot.child("Level1").getValue().toString();
                 String s2=dataSnapshot.child("Level2").getValue().toString();
+
+
 
 
 
@@ -150,13 +155,18 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(score==0)
+                {
+                    b1=findViewById(R.id.response);
+                    b1.setVisibility(View.INVISIBLE);
+                    b1.setEnabled(false);
+                }
+            }
+        }, 1000);
 
-        if(score==0)
-        {
-            b1=findViewById(R.id.response);
-            b1.setVisibility(View.INVISIBLE);
-            b1.setEnabled(false);
-        }
 
         int x=(int)getIntent().getSerializableExtra("mapid");
         a=x;
