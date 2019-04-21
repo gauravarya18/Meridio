@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.tinder2.ZoomView
+<com.meridio.tinder2.ZoomView
     android:id="@+id/zoom"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -35,7 +35,7 @@
         </ImageView>
    </RelativeLayout>
 
-</com.example.tinder2.ZoomView>
+</com.meridio.tinder2.ZoomView>
 <!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
     <!--android:id="@+id/my_frame"-->
     <!--android:layout_width="fill_parent"-->

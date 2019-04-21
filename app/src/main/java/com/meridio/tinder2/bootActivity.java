@@ -1,4 +1,4 @@
-package com.example.tinder2;
+package com.meridio.tinder2;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -17,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.app.ProgressDialog;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

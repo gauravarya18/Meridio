@@ -1,4 +1,4 @@
-package com.example.tinder2;
+package com.meridio.tinder2;
 
 public class NEWS {
 

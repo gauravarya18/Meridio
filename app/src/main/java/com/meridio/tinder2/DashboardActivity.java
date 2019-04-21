@@ -1,21 +1,15 @@
-package com.example.tinder2;
+package com.meridio.tinder2;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import java.util.ArrayList;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
+import java.util.ArrayList;
+
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
@@ -27,8 +21,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
 
 public class DashboardActivity extends AppCompatActivity {
     int a;

@@ -1,4 +1,4 @@
-package com.example.tinder2;
+package com.meridio.tinder2;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
